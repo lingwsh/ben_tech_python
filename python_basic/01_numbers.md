@@ -1,6 +1,6 @@
 
 
-## Basic python type explaination
+# Basic python type explaination
 In Python, there are several built-in data types that can be used to store values, including:
 
 1. Numbers: used to store numeric values. There are two types of numbers in Python: integers (int) and floating-point numbers (float).
@@ -19,7 +19,7 @@ In Python, there are several built-in data types that can be used to store value
 
 These data types form the basic building blocks of any Python program and are used to represent and manipulate different types of data.
 
-## List of the basic Python data types:
+# List of the basic Python data types:
 
 1. int
 2. float
@@ -30,7 +30,7 @@ These data types form the basic building blocks of any Python program and are us
 7. set
 8. bool
 
-## Introduce python numbers
+# Introduce python numbers
 In Python, there are two main types of numbers: integers (int) and floating-point numbers (float).
 
 Integers are whole numbers, such as 1, 2, 3, and so on. They can be positive, negative, or zero, and are used to represent countable values.
