@@ -105,3 +105,22 @@ print(z)  # Output: 30
 ```
 
 In this example, the variables x and y are assigned the values 10 and 20, respectively. The addition of x and y is then stored in the variable z.
+
+## What the rule of the variable name in python
+In Python, there are certain rules that you need to follow when naming variables:
+
+1. Variable names must start with a letter or an underscore.
+2. Variable names can only contain letters, numbers, and underscores.
+3. Variable names cannot be the same as Python keywords, such as for, while, if, and, or, etc.
+4. Variable names are case-sensitive, meaning that name and Name are considered to be different variables.
+5. Variable names should be descriptive and meaningful, and should reflect the value that they hold.
+It's recommended to use lowercase letters and underscores to separate words in variable names, as this is a common convention in Python. For example:
+
+
+```
+first_name
+last_name
+student_id
+```
+
+In summary, the rules for naming variables in Python are designed to ensure that your code is readable and understandable, and to prevent naming conflicts with Python keywords. By following these rules, you can make your code easier to maintain and understand, even as your programs become more complex.
