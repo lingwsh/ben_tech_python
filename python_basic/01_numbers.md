@@ -69,3 +69,39 @@ For example, in Python 3:
 If you want the result of a division operation to be an integer, you can use the // operator, which performs integer division and rounds down to the nearest whole number:
 
 ```print(5 // 2)  # Output: 2```
+
+# What is Variable in Python
+A variable in Python is a named storage location that holds a value. The value stored in a variable can be changed, and a single variable can store different values at different times during the execution of a program.
+
+Variables are declared by assigning a value to a name using the equal sign =. For example:
+
+```
+x = 10
+```
+
+In this example, the name x is assigned the value 10. You can now use the variable x in your program to refer to the value 10.
+
+It's important to choose descriptive names for your variables that reflect the values they hold. For example, if you have a variable that holds the radius of a circle, you might choose a name like radius.
+
+Once you have declared a variable, you can change its value by assigning a new value to it using the equal sign =. For example:
+
+```
+x = 10
+x = 20
+```
+
+In this example, the value of x is changed from 10 to 20.
+
+It's important to note that in Python, you don't need to specify the data type of a variable when declaring it. Python is dynamically typed, which means that the data type of a variable is determined by the value it holds at runtime.
+
+
+You can also perform operations on variables and store the result in a new or existing variable. For example:
+
+
+```x = 10
+y = 20
+z = x + y
+print(z)  # Output: 30
+```
+
+In this example, the variables x and y are assigned the values 10 and 20, respectively. The addition of x and y is then stored in the variable z.
