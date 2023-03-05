@@ -3,3 +3,5 @@ matplotlib
 openpyxl
 notebook
 numpy
+moviepy
+openai
