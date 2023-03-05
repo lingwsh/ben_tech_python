@@ -12,5 +12,7 @@ pip install -r requirements
 课程中所有需要的软件包会自动安装。
 
 # 课程目录
+## New Tech
+- [x] [视频: OpenAI Whisper使用方法](https://youtu.be/dt-z6BZ7oEw) => [代码](https://github.com/lingwsh/ben_tech_python/tree/main/whisper)
 ## 基本语法
 - [x] [数字和变量 Numbers and Variable](https://github.com/lingwsh/ben_tech_python/blob/main/python_basic/01_numbers.md)
