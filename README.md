@@ -14,10 +14,9 @@ pip install -r requirements
 # 课程目录
 ## New Tech
 - [x] [视频: OpenAI Whisper使用方法](https://youtu.be/dt-z6BZ7oEw) => [代码](https://github.com/lingwsh/ben_tech_python/tree/main/whisper)
-
 - [x] [视频: OpenAI Whisper API 使用方法 价格分析 优化策略](https://youtu.be/dt-z6BZ7oEw) => [代码](https://github.com/lingwsh/ben_tech_python/tree/main/whisper)
-
-- [x] [视频: 字幕翻译 长文本 免费谷歌翻译](https://youtu.be/dt-z6BZ7oEw) => [代码](https://github.com/lingwsh/ben_tech_python/tree/main/whisper)
+- [x] [视频: OpenAI GPT 4发展历史和功能讲解](https://youtu.be/AJKy52Qyx4s)
+- [x] [视频: 字幕翻译 长文本 免费谷歌翻译](https://youtu.be/kcrLJvS46kQ) => [代码](https://github.com/lingwsh/ben_tech_python/tree/main/google_translator)
 
 
 ## 基本语法

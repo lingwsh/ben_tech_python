@@ -6,6 +6,7 @@ import os
 
 dict_file = open("language_zh.json")
 lang_dict = json.load(dict_file)
+sleep_time = 2
 
 def single_translator(file_path, lang_in, lang_out):
     """Translate a single file from lang_in to lang_out
@@ -27,7 +28,7 @@ def single_translator(file_path, lang_in, lang_out):
     lines = open(file_path, 'r').readlines()
     text = ""
     result = ""
-    limit_len = 3000
+    limit_len = 4000
     line_num = len(lines)
     # Get translate by lines
     for i in tqdm(range(line_num)):
@@ -37,7 +38,7 @@ def single_translator(file_path, lang_in, lang_out):
             trans = translator.translate(text, src=lang_in, dest=lang_out)
             result += trans.text
             text = ""
-            sleep(2)
+            sleep(sleep_time)
     # Write to file
     with open(fname_out, "w") as f:
         f.write(result)
@@ -57,11 +58,9 @@ def multiple_translator(file_path, lang_in, lang_out_list):
             lang = lang_out_list[i]
             print(f"Start to {lang_in}|{lang_dict[lang_in]} to {lang}|{lang_dict[lang]}: {i+1}/{lang_out_len}")
             single_translator(file_path, lang_in, lang)
-            sleep(3)
         except Exception as e:
             print(f"Retry to {lang_in} to {lang}")
             single_translator(file_path, lang_in, lang)
-            sleep(3)
 
 # Please change the file path to your own file path
 file_path = "../data/open_ai_whisper.srt"
