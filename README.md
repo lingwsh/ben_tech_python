@@ -18,7 +18,7 @@ pip install -r requirements
 - [x] [视频: OpenAI GPT 4发展历史和功能讲解](https://youtu.be/AJKy52Qyx4s)
 - [x] [视频: 字幕翻译 长文本 免费谷歌翻译](https://youtu.be/kcrLJvS46kQ) => [代码](https://github.com/lingwsh/ben_tech_python/tree/main/google_translator)
 - [x] [视频: Amazon CodeWhisper 免费编程助手](https://youtu.be/jIOyR6oPAMU)
-- [x] [Mac mini M2 & frp](https://youtu.be/2Z3Zq2ZQJ8c) => [资源文档](https://github.com/lingwsh/ben_tech_python/blob/main/mac_m2/mac_m2_server.md)
+- [x] [Mac mini M2 & frp](https://youtu.be/xa_FZqJ-Lzs) => [资源文档](https://github.com/lingwsh/ben_tech_python/blob/main/mac_m2/mac_m2_server.md)
 
 
 ## 基本语法
