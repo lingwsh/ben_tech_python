@@ -19,7 +19,7 @@ pip install -r requirements
 - [x] [视频: 字幕翻译 长文本 免费谷歌翻译](https://youtu.be/kcrLJvS46kQ) => [代码](https://github.com/lingwsh/ben_tech_python/tree/main/google_translator)
 - [x] [视频: Amazon CodeWhisper 免费编程助手](https://youtu.be/jIOyR6oPAMU)
 - [x] [Mac mini M2 & frp](https://youtu.be/xa_FZqJ-Lzs) => [资源文档](https://github.com/lingwsh/ben_tech_python/blob/main/mac_m2/mac_m2_server.md)
-
+- [x] [Code Interpreter强大的ChatGPT新功能 直接运行Python！](https://www.youtube.com/watch?v=7FhJJPOIsUA)
 
 ## 基本语法
 - [x] [视频: 数字和变量 Numbers and Variable](https://youtu.be/VXbLZtoES6U) | [Reading materials](https://github.com/lingwsh/ben_tech_python/blob/main/python_basic/01_numbers.md)
