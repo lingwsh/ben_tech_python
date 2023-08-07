@@ -20,6 +20,7 @@ pip install -r requirements
 - [x] [视频: Amazon CodeWhisper 免费编程助手](https://youtu.be/jIOyR6oPAMU)
 - [x] [Mac mini M2 & frp](https://youtu.be/xa_FZqJ-Lzs) => [资源文档](https://github.com/lingwsh/ben_tech_python/blob/main/mac_m2/mac_m2_server.md)
 - [x] [Code Interpreter强大的ChatGPT新功能 直接运行Python！](https://www.youtube.com/watch?v=7FhJJPOIsUA)
+- [x] [ChatGPT正在偷你的数据 进行模型训练 你知道吗？](https://youtu.be/RJpCYJdKJ2Y) => [官方数据控制说明地址](https://help.openai.com/en/articles/7730893-data-controls-faq) | [官方数据控制pdf中英文备份](https://github.com/lingwsh/ben_tech_python/blob/main/chatgpt/Data%20Controls%20FAQ%20_%20OpenAI%20Help%20Center%20---%20%E6%95%B0%E6%8D%AE%E6%8E%A7%E5%88%B6%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E7%AD%94%20_%20OpenAI%20%E5%B8%AE%E5%8A%A9%E4%B8%AD%E5%BF%83.pdf)
 
 ## 基本语法
 - [x] [视频: 数字和变量 Numbers and Variable](https://youtu.be/VXbLZtoES6U) | [Reading materials](https://github.com/lingwsh/ben_tech_python/blob/main/python_basic/01_numbers.md)
