@@ -24,6 +24,7 @@ pip install -r requirements
 - [x] [视频: Mac mini 服务器远程控制 RustDesk 开源免费 既快又好](https://youtu.be/J2tcmEakJrQ)
 - [x] [视频: 沉浸式翻译 PDF文献/网页一键全文对照翻译 工作学习必备！ 用户体验天下第一 支持多引擎多语言 全平台](https://youtu.be/4cqiUO6WIfA)
 - [x] [视频: GitHub Copilot Chat 对话式编程工具 这次真的是躺着编程！和代码在vscode谈个恋爱](https://youtu.be/49nFJJuYIFg)
+- [x] [视频: 为什么买“老款”国产安卓手机？ 便宜啊！一加ACE Pro(10T) VS 一加12](https://youtu.be/fH5_WeLPj3Y)
 
 ## 基本语法
 - [x] [视频: 数字和变量 Numbers and Variable](https://youtu.be/VXbLZtoES6U) | [Reading materials](https://github.com/lingwsh/ben_tech_python/blob/main/python_basic/01_numbers.md)
