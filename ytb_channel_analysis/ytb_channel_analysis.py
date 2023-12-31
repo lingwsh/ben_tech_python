@@ -82,6 +82,8 @@ def data_to_excel(file_path):
 
     # Order by subscribers descending
     df = df.sort_values(by=['subscribers'], ascending=False)
+    # Print count of rows
+    print("Total rows:", len(df))
 
     # Write to excel
     df.to_excel('all_ytb_channel.xlsx', index=False)
