@@ -26,7 +26,7 @@ pip install -r requirements
 - [x] [视频: GitHub Copilot Chat 对话式编程工具 这次真的是躺着编程！和代码在vscode谈个恋爱](https://youtu.be/49nFJJuYIFg)
 - [x] [视频: 为什么买“老款”国产安卓手机？ 便宜啊！一加ACE Pro(10T) VS 一加12](https://youtu.be/fH5_WeLPj3Y)
 - [x} [如何在北欧找工作? 丹麦｜挪威｜瑞典｜芬兰 笨笨科技](https://youtu.be/89msM0KYYJ0)
-- [x] [视频：Youtube频道订阅分析｜优秀频道top20推荐｜数据获取｜分析代码免费分享](https://youtu.be/cMXWS-qyPfY)| [代码](https://github.com/lingwsh/ben_tech_python/blob/main/ytb_channel_analysis/ytb_channel_analysis.py)
+- [x] [视频：Youtube频道订阅分析｜优秀频道top20推荐｜数据获取｜分析代码免费分享](https://youtu.be/cMXWS-qyPfY)| [代码](https://github.com/lingwsh/ben_tech_python/blob/main/ytb_channel_analysis/ytb_channel_analysis.py)|[YouTube Top 20 Channels](https://github.com/lingwsh/ben_tech_python/blob/main/ytb_channel_analysis/ytb_channel_top20_recommendation.xlsx)
 
 ## 基本语法
 - [x] [视频: 数字和变量 Numbers and Variable](https://youtu.be/VXbLZtoES6U) | [Reading materials](https://github.com/lingwsh/ben_tech_python/blob/main/python_basic/01_numbers.md)
