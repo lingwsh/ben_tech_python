@@ -1,4 +1,4 @@
-# 小白学Python课程资料
+# Ben Tech 频道
 
 ## 点击进入频道
 [![Youtobe](https://raw.githubusercontent.com/lingwsh/ben_tech_python/main/img/BenTech.png)](https://www.youtube.com/@bentech_fancy/playlists)
@@ -27,6 +27,11 @@ pip install -r requirements
 - [x] [视频: 为什么买“老款”国产安卓手机？ 便宜啊！一加ACE Pro(10T) VS 一加12](https://youtu.be/fH5_WeLPj3Y)
 - [x] [如何在北欧找工作? 丹麦｜挪威｜瑞典｜芬兰 笨笨科技](https://youtu.be/89msM0KYYJ0)
 - [x] [视频：Youtube频道订阅分析｜优秀频道top20推荐｜数据获取｜分析代码免费分享](https://youtu.be/cMXWS-qyPfY)| [代码](https://github.com/lingwsh/ben_tech_python/blob/main/ytb_channel_analysis/ytb_channel_analysis.py)|[YouTube Top 20 Channels](https://github.com/lingwsh/ben_tech_python/blob/main/ytb_channel_analysis/ytb_channel_top20_recommendation.xlsx)
+- [x] [PDF文献神器 Google Scholar PDF Reader ｜ 找文献 查引用 自动生成目录](https://youtu.be/dmTD67eidWc)
+
+## 生活技巧
+- [x] [Ifö马桶漏水怎么修？吾是马桶工程师](https://youtu.be/vImMbRaINDw)
+- [x] [丹麦买房指南：从准备到交房全流程解析](https://youtu.be/fyuw-b4O83A)
 
 ## Python基本语法
 - [x] [视频: 数字和变量 Numbers and Variable](https://youtu.be/VXbLZtoES6U) | [Reading materials](https://github.com/lingwsh/ben_tech_python/blob/main/python_basic/01_numbers.md)
