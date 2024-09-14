@@ -11,7 +11,7 @@ pip install -r requirements
 
 课程中所有需要的软件包会自动安装。
 
-# 课程目录
+# 视频目录
 ## New Tech
 - [x] [视频: OpenAI Whisper使用方法](https://youtu.be/dt-z6BZ7oEw) => [代码](https://github.com/lingwsh/ben_tech_python/tree/main/whisper)
 - [x] [视频: OpenAI Whisper API 使用方法 价格分析 优化策略](https://youtu.be/dt-z6BZ7oEw) => [代码](https://github.com/lingwsh/ben_tech_python/tree/main/whisper)
@@ -28,11 +28,34 @@ pip install -r requirements
 - [x] [如何在北欧找工作? 丹麦｜挪威｜瑞典｜芬兰 笨笨科技](https://youtu.be/89msM0KYYJ0)
 - [x] [视频：Youtube频道订阅分析｜优秀频道top20推荐｜数据获取｜分析代码免费分享](https://youtu.be/cMXWS-qyPfY)| [代码](https://github.com/lingwsh/ben_tech_python/blob/main/ytb_channel_analysis/ytb_channel_analysis.py)|[YouTube Top 20 Channels](https://github.com/lingwsh/ben_tech_python/blob/main/ytb_channel_analysis/ytb_channel_top20_recommendation.xlsx)
 - [x] [PDF文献神器 Google Scholar PDF Reader ｜ 找文献 查引用 自动生成目录](https://youtu.be/dmTD67eidWc)
+- [x] [Mac Mini M2丐版本地部署Llama3.1 8B模型 #笨笨科技](https://youtu.be/Gn6TQtDlmDY)
+- [x] [Apple發佈會 2024 | 9月最新全面預測蘋果 iPhone16/Mac/ iPad mini 7/ iWatch10](https://youtu.be/a5gdBzxHlhg)
+- [x] [Apple发布会2024秋季 总结解读 快速秒懂 Apple Event - September 9](https://youtu.be/6zAX9XCJW3M)
+- [x] [iPhone 16 Pro Max 版本如何选购？美版/欧版/陆版/港版 | Apple发布会2024](https://youtu.be/1bg1tRp8r-0)
+- [x] [PS5 Pro 差评如潮！光驱没有 ｜ 居然连支架都不送](https://youtu.be/IDua_Hgyq5k)
+- [x] [OpenAI GPT o1模型深度解析与Python贪吃蛇游戏演示](https://youtu.be/K4PWzgann6o) ｜ [贪食蛇代码](https://github.com/lingwsh/ben_tech_python/tree/main/gpt_o1_preview_demo)
 
-## 生活技巧
+## 学习/生活 & 技巧/经验
 - [x] [Ifö马桶漏水怎么修？吾是马桶工程师](https://youtu.be/vImMbRaINDw)
 - [x] [丹麦买房指南：从准备到交房全流程解析](https://youtu.be/fyuw-b4O83A)
+- [x] [丹麦哥本哈根  ottoman土耳其超市 ｜ 超便宜 牛肉&鹰嘴豆！](https://youtu.be/biAb5z3d254)
+- [x] [北欧购买Temu值不值？](https://youtu.be/7kHI4O_vWLQ)
+- [x] [哥本哈根傲娇节（Copenhagen Pride） 2024](https://youtu.be/KKumgWKcqr0)
+- [x] [如何追到女生 or 女神： 痛經呵護篇](https://youtu.be/LNgbteI-T5U)
+- [x] [全球最大的企業接力賽 DHL Relay](https://youtu.be/_Je_87zKLcI)
+- [x] [丹麦传统马术狩猎活动：Hubertusjagt](https://youtu.be/1ByB-24X-K8)
+- [x] [揭秘你不知道的事实：丹麦、挪威和瑞典学术界性别平等状况](https://youtu.be/RqA1XuWLrxE)
+
+## 快乐游戏
+- [x] [黑神话悟空 何是天命人？](https://youtu.be/qXOouWMolc0)
+- [x] [《黑神話·悟空》火爆創紀錄，《西遊記》文化輸出：為何首个boss幽魂難打？](https://youtu.be/5zbUeoHEVrY)
+- [x] [黑神话悟空 剧情 第一回 大战黑熊精 ｜ 黑熊精由来 ｜ 偷袈裟](https://youtu.be/bNs2MkmWWaw)
+- [x] [黑神话悟空 剧情 第二回 风起黄昏 | 陕北说书合集](https://youtu.be/xX5styRUmg0)
+- [x] [黑神话悟空｜虎先锋 轻松打法｜不要太简单攻略](https://youtu.be/7WeFZNdbhXM)
+- [x] [黑神话悟空 第二回大结局 陕北说书断头人有头了｜断头人由来 小须弥山之主 灵吉：大战黄风大圣](https://youtu.be/RXLbvFasC8Y)
+- [x] [黑神话悟空 |隐藏剧情 支线不空boss 前身 | 书生小狐狸：结婚生子 or 作围脖？人妖佛一念之間| 第二回结尾](https://youtu.be/lgyXahjis6Q)
+- [x] [玩黑神话悟空指南：花多少钱？用什么平台设备？大趣闻！](https://youtu.be/9e_O4ZsNR78)
 
 ## Python基本语法
 - [x] [视频: 数字和变量 Numbers and Variable](https://youtu.be/VXbLZtoES6U) | [Reading materials](https://github.com/lingwsh/ben_tech_python/blob/main/python_basic/01_numbers.md)
-- [x] [视频: 字符串 String](https://youtu.be/HIce4v3ofXY)｜[Exercise Colab](https://colab.research.google.com/drive/1Jc0EKjrwgpvTalVjJF5Runvk7YLHiWMN?usp=sharing)
+- [x] [视频: 字符串 String](https://youtu.be/HIce4v3ofXY)｜[Exercise Colab](https://colab.research.google.com/drive/1Jc0EKjrwgpvTalVjJF5Runvk7YLHiWMN?usp=sharing) 
