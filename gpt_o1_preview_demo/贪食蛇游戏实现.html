@@ -1,0 +1,859 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat GPT: 贪食蛇游戏实现</title>
+  <meta name="generator" content="chatGPT Saving Bookmark"/>
+  <style>
+body {
+  background-color: rgb(32,33,35);
+  color: rgb(236,236,241);
+  font-size: 16px;
+  font-family: sans-serif;
+  line-height: 28px;
+  margin: 0px;
+}
+body > .w-full {
+  padding: 30px;
+}
+/* prompt */
+body > .w-full:nth-child(2n+1) {
+  background: rgb(52,53,65);
+}
+/* response */
+body > .w-full:nth-child(2n+2) {
+  background: rgb(68,70,84);
+}
+a, a:visited {
+  color: #7792cd;
+}
+pre {
+  margin: 0 0 1em 0;
+  display: inline-block;
+  width: 100%;
+}
+pre code.hljs {
+  margin-bottom: 1em;
+  border-radius: 5px;
+}
+.whitespace-pre-wrap {
+  white-space: pre-wrap;
+}
+.flex-col {
+  max-width: 850px;
+  margin: 0px auto;
+}
+button {
+  max-width: 16rem;
+}
+button > img {
+max-width: 16rem;
+object-position: center;
+object-fit: cover;
+border-radius: 0.5rem;
+width: 100%;
+max-width: 16rem;
+max-height: 24rem;
+overflow: hidden;
+}
+
+.icon-md, .icon-md-heavy {
+    display: block;
+    vertical-align: middle;
+    stroke-width: 1.5;
+    flex-shrink: 0;
+    height: 18px;
+    width: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+div[role="button"] img {
+max-width: 100%;
+height: auto;
+}
+body > div > div > div > div > div {
+    padding-bottom: 20px;
+}
+</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/default.min.css"/>
+  
+</head>
+<body>
+  <div class="h-full"><div class="react-scroll-to-bottom--css-adujp-79elbk h-full"><div class="react-scroll-to-bottom--css-adujp-1n7m0yu"><div class="flex flex-col text-sm md:pb-9"><div class="draggable no-draggable-children sticky top-0 p-3 mb-1.5 flex items-center justify-between z-10 h-header-height font-semibold bg-token-main-surface-primary max-md:hidden"><div class="absolute start-1/2 ltr:-translate-x-1/2 rtl:translate-x-1/2"></div><div class="flex items-center gap-0 overflow-hidden"><div class="flex items-center"><span class="flex" data-state="closed"></span><span class="flex" data-state="closed"></span></div><div aria-label="模型选择器，当前模型为 o1-preview" role="button" type="button" id="radix-:rl:" aria-haspopup="menu" aria-expanded="false" data-state="closed" class="group flex cursor-pointer items-center gap-1 rounded-lg py-1.5 px-3 text-lg font-semibold hover:bg-token-main-surface-secondary radix-state-open:bg-token-main-surface-secondary text-token-text-secondary overflow-hidden whitespace-nowrap"><div class="text-token-text-secondary">ChatGPT <span class="text-token-text-secondary">o1-preview</span></div></div></div></div><article class="w-full text-token-text-primary focus-visible:outline-2 focus-visible:outline-offset-[-4px]" dir="auto" data-testid="conversation-turn-2" data-scroll-anchor="false"><h5 class="sr-only">您说：</h5><div class="text-base py-[18px] px-3 md:px-4 m-auto w-full md:px-5 lg:px-4 xl:px-5"><div class="mx-auto flex flex-1 gap-4 text-base md:gap-5 lg:gap-6 md:max-w-3xl"><div class="group/conversation-turn relative flex w-full min-w-0 flex-col"><div class="flex-col gap-1 md:gap-3"><div class="flex max-w-full flex-col flex-grow"><div data-message-author-role="user" data-message-id="cb15434f-d56d-4f6d-a3c0-4a164358fcdc" dir="auto" class="min-h-[20px] text-message flex w-full flex-col items-end gap-2 whitespace-normal break-words [.text-message+&amp;]:mt-5"><div class="flex w-full flex-col gap-1 empty:hidden items-end rtl:items-start"><div class="relative max-w-[70%] rounded-3xl px-5 py-2.5 bg-[#f4f4f4] dark:bg-token-main-surface-secondary"><div class="whitespace-pre-wrap">帮我写一个python版本的贪食蛇游戏，在电脑上能够直接运行，实现以下功能
+1.开局点击开始，一个长度为1，速度为1的贪食蛇从静止，在一个200*200的迷宫，等待接收键盘指令
+2.贪食蛇接受的键盘指令为，按键，上下左右，能够指挥贪食蛇的运动方向
+3.当贪食蛇长度达到10，本关卡结束，点击继续，进行下个关卡
+4.新关卡速度依次按照1递增，举例，第二关速度为2，第三关速度为3
+5.当贪食蛇碰到自己的尾巴或者墙壁，死亡，点击重新开始，开始新的游戏</div><div class="absolute bottom-0 right-full top-0 -mr-3.5 hidden pr-5 pt-1 [.group\/conversation-turn:hover_&amp;]:block"><span class="" data-state="closed"></span></div></div></div></div></div></div></div></div></div></article><article class="w-full text-token-text-primary focus-visible:outline-2 focus-visible:outline-offset-[-4px]" dir="auto" data-testid="conversation-turn-3" data-scroll-anchor="false"><h5 class="sr-only"></h5><div class="text-base py-[18px] px-3 md:px-4 m-auto w-full md:px-5 lg:px-4 xl:px-5"><div class="mx-auto flex flex-1 gap-4 text-base md:gap-5 lg:gap-6 md:max-w-3xl"><div class="flex-shrink-0 flex flex-col relative items-end"><div><div class="pt-0"><div class="gizmo-bot-avatar flex h-8 w-8 items-center justify-center overflow-hidden rounded-full"><div class="relative p-1 rounded-sm flex items-center justify-center bg-token-main-surface-primary text-token-text-primary h-8 w-8"><svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-md" role="img"><text x="-9999" y="-9999">ChatGPT</text><path d="M37.5324 16.8707C37.9808 15.5241 38.1363 14.0974 37.9886 12.6859C37.8409 11.2744 37.3934 9.91076 36.676 8.68622C35.6126 6.83404 33.9882 5.3676 32.0373 4.4985C30.0864 3.62941 27.9098 3.40259 25.8215 3.85078C24.8796 2.7893 23.7219 1.94125 22.4257 1.36341C21.1295 0.785575 19.7249 0.491269 18.3058 0.500197C16.1708 0.495044 14.0893 1.16803 12.3614 2.42214C10.6335 3.67624 9.34853 5.44666 8.6917 7.47815C7.30085 7.76286 5.98686 8.3414 4.8377 9.17505C3.68854 10.0087 2.73073 11.0782 2.02839 12.312C0.956464 14.1591 0.498905 16.2988 0.721698 18.4228C0.944492 20.5467 1.83612 22.5449 3.268 24.1293C2.81966 25.4759 2.66413 26.9026 2.81182 28.3141C2.95951 29.7256 3.40701 31.0892 4.12437 32.3138C5.18791 34.1659 6.8123 35.6322 8.76321 36.5013C10.7141 37.3704 12.8907 37.5973 14.9789 37.1492C15.9208 38.2107 17.0786 39.0587 18.3747 39.6366C19.6709 40.2144 21.0755 40.5087 22.4946 40.4998C24.6307 40.5054 26.7133 39.8321 28.4418 38.5772C30.1704 37.3223 31.4556 35.5506 32.1119 33.5179C33.5027 33.2332 34.8167 32.6547 35.9659 31.821C37.115 30.9874 38.0728 29.9178 38.7752 28.684C39.8458 26.8371 40.3023 24.6979 40.0789 22.5748C39.8556 20.4517 38.9639 18.4544 37.5324 16.8707ZM22.4978 37.8849C20.7443 37.8874 19.0459 37.2733 17.6994 36.1501C17.7601 36.117 17.8666 36.0586 17.936 36.0161L25.9004 31.4156C26.1003 31.3019 26.2663 31.137 26.3813 30.9378C26.4964 30.7386 26.5563 30.5124 26.5549 30.2825V19.0542L29.9213 20.998C29.9389 21.0068 29.9541 21.0198 29.9656 21.0359C29.977 21.052 29.9842 21.0707 29.9867 21.0902V30.3889C29.9842 32.375 29.1946 34.2791 27.7909 35.6841C26.3872 37.0892 24.4838 37.8806 22.4978 37.8849ZM6.39227 31.0064C5.51397 29.4888 5.19742 27.7107 5.49804 25.9832C5.55718 26.0187 5.66048 26.0818 5.73461 26.1244L13.699 30.7248C13.8975 30.8408 14.1233 30.902 14.3532 30.902C14.583 30.902 14.8088 30.8408 15.0073 30.7248L24.731 25.1103V28.9979C24.7321 29.0177 24.7283 29.0376 24.7199 29.0556C24.7115 29.0736 24.6988 29.0893 24.6829 29.1012L16.6317 33.7497C14.9096 34.7416 12.8643 35.0097 10.9447 34.4954C9.02506 33.9811 7.38785 32.7263 6.39227 31.0064ZM4.29707 13.6194C5.17156 12.0998 6.55279 10.9364 8.19885 10.3327C8.19885 10.4013 8.19491 10.5228 8.19491 10.6071V19.808C8.19351 20.0378 8.25334 20.2638 8.36823 20.4629C8.48312 20.6619 8.64893 20.8267 8.84863 20.9404L18.5723 26.5542L15.206 28.4979C15.1894 28.5089 15.1703 28.5155 15.1505 28.5173C15.1307 28.5191 15.1107 28.516 15.0924 28.5082L7.04046 23.8557C5.32135 22.8601 4.06716 21.2235 3.55289 19.3046C3.03862 17.3858 3.30624 15.3413 4.29707 13.6194ZM31.955 20.0556L22.2312 14.4411L25.5976 12.4981C25.6142 12.4872 25.6333 12.4805 25.6531 12.4787C25.6729 12.4769 25.6928 12.4801 25.7111 12.4879L33.7631 17.1364C34.9967 17.849 36.0017 18.8982 36.6606 20.1613C37.3194 21.4244 37.6047 22.849 37.4832 24.2684C37.3617 25.6878 36.8382 27.0432 35.9743 28.1759C35.1103 29.3086 33.9415 30.1717 32.6047 30.6641C32.6047 30.5947 32.6047 30.4733 32.6047 30.3889V21.188C32.6066 20.9586 32.5474 20.7328 32.4332 20.5338C32.319 20.3348 32.154 20.1698 31.955 20.0556ZM35.3055 15.0128C35.2464 14.9765 35.1431 14.9142 35.069 14.8717L27.1045 10.2712C26.906 10.1554 26.6803 10.0943 26.4504 10.0943C26.2206 10.0943 25.9948 10.1554 25.7963 10.2712L16.0726 15.8858V11.9982C16.0715 11.9783 16.0753 11.9585 16.0837 11.9405C16.0921 11.9225 16.1048 11.9068 16.1207 11.8949L24.1719 7.25025C25.4053 6.53903 26.8158 6.19376 28.2383 6.25482C29.6608 6.31589 31.0364 6.78077 32.2044 7.59508C33.3723 8.40939 34.2842 9.53945 34.8334 10.8531C35.3826 12.1667 35.5464 13.6095 35.3055 15.0128ZM14.2424 21.9419L10.8752 19.9981C10.8576 19.9893 10.8423 19.9763 10.8309 19.9602C10.8195 19.9441 10.8122 19.9254 10.8098 19.9058V10.6071C10.8107 9.18295 11.2173 7.78848 11.9819 6.58696C12.7466 5.38544 13.8377 4.42659 15.1275 3.82264C16.4173 3.21869 17.8524 2.99464 19.2649 3.1767C20.6775 3.35876 22.0089 3.93941 23.1034 4.85067C23.0427 4.88379 22.937 4.94215 22.8668 4.98473L14.9024 9.58517C14.7025 9.69878 14.5366 9.86356 14.4215 10.0626C14.3065 10.2616 14.2466 10.4877 14.2479 10.7175L14.2424 21.9419ZM16.071 17.9991L20.4018 15.4978L24.7325 17.9975V22.9985L20.4018 25.4983L16.071 22.9985V17.9991Z" fill="currentColor"></path></svg></div></div></div></div></div><div class="group/conversation-turn relative flex w-full min-w-0 flex-col agent-turn"><div class="flex-col gap-1 md:gap-3"><div class="flex max-w-full flex-col flex-grow"><p class="first:mt-0 my-1.5 relative h-8 text-token-text-secondary hover:text-token-text-primary"></p><div class="group absolute left-0 top-0 mr-1.5 h-8 overflow-hidden mt-1"><button class="" style="opacity: 1;"><div class="flex items-center justify-start gap-1"><span>Thought for 8 seconds</span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-md"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 9.29289C5.68342 8.90237 6.31658 8.90237 6.70711 9.29289L12 14.5858L17.2929 9.29289C17.6834 8.90237 18.3166 8.90237 18.7071 9.29289C19.0976 9.68342 19.0976 10.3166 18.7071 10.7071L12.7071 16.7071C12.5196 16.8946 12.2652 17 12 17C11.7348 17 11.4804 16.8946 11.2929 16.7071L5.29289 10.7071C4.90237 10.3166 4.90237 9.68342 5.29289 9.29289Z" fill="currentColor"></path></svg></div></button></div><p></p><div data-message-author-role="assistant" data-message-id="c83c4d35-12a6-4bd5-a4bd-0e8adb839ce4" dir="auto" class="min-h-[20px] text-message flex w-full flex-col items-end gap-2 whitespace-normal break-words [.text-message+&amp;]:mt-5"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert dark"><p>以下是符合您要求的 Python 版本贪食蛇游戏代码，使用 Pygame 库编写。请确保您的计算机已安装 Pygame，可以通过运行 <code>pip install pygame</code> 来安装。</p><pre class="!overflow-visible"><div class="dark bg-gray-950 contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative"><div class="flex items-center text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md h-9">python</div><div class="sticky top-9 md:top-[5.75rem]"><div class="absolute bottom-0 right-2 flex h-9 items-center"><div class="flex items-center rounded bg-token-main-surface-secondary px-2 font-sans text-xs text-token-text-secondary"><span class="" data-state="closed"></span></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-python"><span class="hljs-keyword">import</span> pygame
+<span class="hljs-keyword">import</span> sys
+<span class="hljs-keyword">import</span> random
+
+<span class="hljs-comment"># 初始化 Pygame</span>
+pygame.init()
+
+<span class="hljs-comment"># 设置屏幕大小</span>
+SCREEN_WIDTH = <span class="hljs-number">200</span>
+SCREEN_HEIGHT = <span class="hljs-number">200</span>
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption(<span class="hljs-string">'贪食蛇'</span>)
+
+<span class="hljs-comment"># 定义颜色</span>
+BLACK = pygame.Color(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+WHITE = pygame.Color(<span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>)
+GREEN = pygame.Color(<span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>)
+RED = pygame.Color(<span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+
+<span class="hljs-comment"># 定义蛇的块大小</span>
+BLOCK_SIZE = <span class="hljs-number">10</span>
+
+<span class="hljs-comment"># 字体设置</span>
+font = pygame.font.SysFont(<span class="hljs-string">'Arial'</span>, <span class="hljs-number">20</span>)
+
+<span class="hljs-comment"># 游戏主函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():
+    clock = pygame.time.Clock()
+    level = <span class="hljs-number">1</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        game_loop(level)
+        level += <span class="hljs-number">1</span>
+
+<span class="hljs-comment"># 游戏循环函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">game_loop</span>(<span class="hljs-params">level</span>):
+    <span class="hljs-comment"># 初始化蛇</span>
+    snake_pos = [<span class="hljs-number">100</span>, <span class="hljs-number">100</span>]
+    snake_body = [snake_pos[:]]
+    direction = <span class="hljs-string">'STOP'</span>
+    change_to = direction
+
+    <span class="hljs-comment"># 初始化食物</span>
+    food_pos = get_food_position(snake_body)
+    food_spawn = <span class="hljs-literal">True</span>
+
+    <span class="hljs-comment"># 初始速度</span>
+    speed = level
+
+    <span class="hljs-comment"># 计分</span>
+    score = <span class="hljs-number">1</span>
+
+    <span class="hljs-comment"># 游戏开始界面</span>
+    start_game = <span class="hljs-literal">False</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> start_game:
+        screen.fill(BLACK)
+        show_message(<span class="hljs-string">'按任意键开始'</span>, WHITE, SCREEN_WIDTH / <span class="hljs-number">2</span>, SCREEN_HEIGHT / <span class="hljs-number">2</span>)
+        pygame.display.flip()
+        <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.KEYDOWN:
+                start_game = <span class="hljs-literal">True</span>
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+    <span class="hljs-comment"># 主游戏循环</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            <span class="hljs-comment"># 键盘输入</span>
+            <span class="hljs-keyword">elif</span> event.<span class="hljs-built_in">type</span> == pygame.KEYDOWN:
+                <span class="hljs-keyword">if</span> event.key == pygame.K_UP <span class="hljs-keyword">and</span> direction != <span class="hljs-string">'DOWN'</span>:
+                    change_to = <span class="hljs-string">'UP'</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_DOWN <span class="hljs-keyword">and</span> direction != <span class="hljs-string">'UP'</span>:
+                    change_to = <span class="hljs-string">'DOWN'</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_LEFT <span class="hljs-keyword">and</span> direction != <span class="hljs-string">'RIGHT'</span>:
+                    change_to = <span class="hljs-string">'LEFT'</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_RIGHT <span class="hljs-keyword">and</span> direction != <span class="hljs-string">'LEFT'</span>:
+                    change_to = <span class="hljs-string">'RIGHT'</span>
+
+        <span class="hljs-comment"># 如果有方向改变，更新方向</span>
+        <span class="hljs-keyword">if</span> change_to != <span class="hljs-string">'STOP'</span>:
+            direction = change_to
+
+        <span class="hljs-comment"># 根据方向移动蛇</span>
+        <span class="hljs-keyword">if</span> direction == <span class="hljs-string">'UP'</span>:
+            snake_pos[<span class="hljs-number">1</span>] -= BLOCK_SIZE
+        <span class="hljs-keyword">if</span> direction == <span class="hljs-string">'DOWN'</span>:
+            snake_pos[<span class="hljs-number">1</span>] += BLOCK_SIZE
+        <span class="hljs-keyword">if</span> direction == <span class="hljs-string">'LEFT'</span>:
+            snake_pos[<span class="hljs-number">0</span>] -= BLOCK_SIZE
+        <span class="hljs-keyword">if</span> direction == <span class="hljs-string">'RIGHT'</span>:
+            snake_pos[<span class="hljs-number">0</span>] += BLOCK_SIZE
+
+        <span class="hljs-comment"># 增加蛇的长度</span>
+        <span class="hljs-keyword">if</span> direction != <span class="hljs-string">'STOP'</span>:
+            snake_body.insert(<span class="hljs-number">0</span>, <span class="hljs-built_in">list</span>(snake_pos))
+            <span class="hljs-keyword">if</span> snake_pos == food_pos:
+                score += <span class="hljs-number">1</span>
+                food_spawn = <span class="hljs-literal">False</span>
+            <span class="hljs-keyword">else</span>:
+                snake_body.pop()
+
+        <span class="hljs-comment"># 食物重生</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> food_spawn:
+            food_pos = get_food_position(snake_body)
+            food_spawn = <span class="hljs-literal">True</span>
+
+        <span class="hljs-comment"># 填充背景</span>
+        screen.fill(BLACK)
+
+        <span class="hljs-comment"># 画蛇</span>
+        <span class="hljs-keyword">for</span> pos <span class="hljs-keyword">in</span> snake_body:
+            pygame.draw.rect(screen, GREEN, pygame.Rect(pos[<span class="hljs-number">0</span>], pos[<span class="hljs-number">1</span>], BLOCK_SIZE, BLOCK_SIZE))
+
+        <span class="hljs-comment"># 画食物</span>
+        pygame.draw.rect(screen, RED, pygame.Rect(food_pos[<span class="hljs-number">0</span>], food_pos[<span class="hljs-number">1</span>], BLOCK_SIZE, BLOCK_SIZE))
+
+        <span class="hljs-comment"># 边界检测</span>
+        <span class="hljs-keyword">if</span> snake_pos[<span class="hljs-number">0</span>] &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> snake_pos[<span class="hljs-number">0</span>] &gt; SCREEN_WIDTH - BLOCK_SIZE:
+            game_over()
+            <span class="hljs-keyword">return</span>
+        <span class="hljs-keyword">if</span> snake_pos[<span class="hljs-number">1</span>] &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> snake_pos[<span class="hljs-number">1</span>] &gt; SCREEN_HEIGHT - BLOCK_SIZE:
+            game_over()
+            <span class="hljs-keyword">return</span>
+
+        <span class="hljs-comment"># 自身碰撞检测</span>
+        <span class="hljs-keyword">for</span> block <span class="hljs-keyword">in</span> snake_body[<span class="hljs-number">1</span>:]:
+            <span class="hljs-keyword">if</span> snake_pos == block:
+                game_over()
+                <span class="hljs-keyword">return</span>
+
+        <span class="hljs-comment"># 当蛇的长度达到10，进入下一关</span>
+        <span class="hljs-keyword">if</span> score &gt;= <span class="hljs-number">10</span>:
+            show_continue()
+            <span class="hljs-keyword">return</span>
+
+        <span class="hljs-comment"># 刷新屏幕</span>
+        pygame.display.flip()
+
+        <span class="hljs-comment"># 控制游戏速度</span>
+        clock.tick(<span class="hljs-number">5</span> * speed)
+
+<span class="hljs-comment"># 获取食物位置函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">get_food_position</span>(<span class="hljs-params">snake_body</span>):
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        x = random.randrange(<span class="hljs-number">0</span>, SCREEN_WIDTH, BLOCK_SIZE)
+        y = random.randrange(<span class="hljs-number">0</span>, SCREEN_HEIGHT, BLOCK_SIZE)
+        <span class="hljs-keyword">if</span> [x, y] <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> snake_body:
+            <span class="hljs-keyword">return</span> [x, y]
+
+<span class="hljs-comment"># 游戏结束函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">game_over</span>():
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        screen.fill(BLACK)
+        show_message(<span class="hljs-string">'游戏结束，按R重新开始'</span>, WHITE, SCREEN_WIDTH / <span class="hljs-number">2</span>, SCREEN_HEIGHT / <span class="hljs-number">2</span>)
+        pygame.display.flip()
+        <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.KEYDOWN:
+                <span class="hljs-keyword">if</span> event.key == pygame.K_r:
+                    main()
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+<span class="hljs-comment"># 显示继续函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">show_continue</span>():
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        screen.fill(BLACK)
+        show_message(<span class="hljs-string">'进入下一关，按C继续'</span>, WHITE, SCREEN_WIDTH / <span class="hljs-number">2</span>, SCREEN_HEIGHT / <span class="hljs-number">2</span>)
+        pygame.display.flip()
+        <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.KEYDOWN:
+                <span class="hljs-keyword">if</span> event.key == pygame.K_c:
+                    <span class="hljs-keyword">return</span>
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+<span class="hljs-comment"># 显示信息函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">show_message</span>(<span class="hljs-params">message, color, x, y</span>):
+    text = font.render(message, <span class="hljs-literal">True</span>, color)
+    rect = text.get_rect(center=(x, y))
+    screen.blit(text, rect)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    main()
+</code></div></div></pre><p><strong>运行方法：</strong></p><ol><li>将上述代码保存为一个 <code>.py</code> 文件，例如 <code>snake_game.py</code>。</li><li>确保已安装 Pygame，未安装可运行 <code>pip install pygame</code>。</li><li>在命令行中运行 <code>python snake_game.py</code>。</li><li>按提示操作，使用键盘的上下左右箭头控制贪食蛇移动。</li></ol><p><strong>游戏说明：</strong></p><ul><li>游戏开始时，贪食蛇长度为1，速度为1，等待玩家输入方向指令。</li><li>使用键盘的 <strong>上下左右箭头键</strong> 控制贪食蛇的移动方向。</li><li>当贪食蛇的长度达到10时，当前关卡结束，按 <strong>C 键</strong> 继续进入下一关。</li><li>每通过一关，贪食蛇的速度增加1，例如第二关速度为2，第三关速度为3。</li><li>如果贪食蛇碰到自己的身体或墙壁，游戏结束，按 <strong>R 键</strong> 重新开始游戏。</li></ul><p>希望这个游戏能满足您的要求，祝您游戏愉快！</p></div></div></div></div><div class="mt-1 flex gap-3 empty:hidden -ml-2"></div><div class="pr-2 lg:pr-0"></div></div></div></div></div></article><article class="w-full text-token-text-primary focus-visible:outline-2 focus-visible:outline-offset-[-4px]" dir="auto" data-testid="conversation-turn-4" data-scroll-anchor="false"><h5 class="sr-only">您说：</h5><div class="text-base py-[18px] px-3 md:px-4 m-auto w-full md:px-5 lg:px-4 xl:px-5"><div class="mx-auto flex flex-1 gap-4 text-base md:gap-5 lg:gap-6 md:max-w-3xl"><div class="group/conversation-turn relative flex w-full min-w-0 flex-col"><div class="flex-col gap-1 md:gap-3"><div class="flex max-w-full flex-col flex-grow"><div data-message-author-role="user" data-message-id="f9915511-f691-4b5f-97b1-950350325491" dir="auto" class="min-h-[20px] text-message flex w-full flex-col items-end gap-2 whitespace-normal break-words [.text-message+&amp;]:mt-5"><div class="flex w-full flex-col gap-1 empty:hidden items-end rtl:items-start"><div class="relative max-w-[70%] rounded-3xl px-5 py-2.5 bg-[#f4f4f4] dark:bg-token-main-surface-secondary"><div class="whitespace-pre-wrap">运行出错：/Users/ling/anaconda3/envs/ben_tech_python_3_11/bin/python /Users/ling/Documents/github_swn/ben_tech_python/gpt_o1_preview_demo/snake_game.py 
+pygame 2.6.0 (SDL 2.28.4, Python 3.11.4)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+Traceback (most recent call last):
+  File "/Users/ling/Documents/github_swn/ben_tech_python/gpt_o1_preview_demo/snake_game.py", line 188, in &lt;module&gt;
+    main()
+  File "/Users/ling/Documents/github_swn/ben_tech_python/gpt_o1_preview_demo/snake_game.py", line 31, in main
+    game_loop(level)
+  File "/Users/ling/Documents/github_swn/ben_tech_python/gpt_o1_preview_demo/snake_game.py", line 143, in game_loop
+    clock.tick(5 * speed)
+    ^^^^^
+NameError: name 'clock' is not defined. Did you mean: 'block'?</div><div class="absolute bottom-0 right-full top-0 -mr-3.5 hidden pr-5 pt-1 [.group\/conversation-turn:hover_&amp;]:block"><span class="" data-state="closed"></span></div></div></div></div></div></div></div></div></div></article><article class="w-full text-token-text-primary focus-visible:outline-2 focus-visible:outline-offset-[-4px]" dir="auto" data-testid="conversation-turn-5" data-scroll-anchor="false"><h5 class="sr-only"></h5><div class="text-base py-[18px] px-3 md:px-4 m-auto w-full md:px-5 lg:px-4 xl:px-5"><div class="mx-auto flex flex-1 gap-4 text-base md:gap-5 lg:gap-6 md:max-w-3xl"><div class="flex-shrink-0 flex flex-col relative items-end"><div><div class="pt-0"><div class="gizmo-bot-avatar flex h-8 w-8 items-center justify-center overflow-hidden rounded-full"><div class="relative p-1 rounded-sm flex items-center justify-center bg-token-main-surface-primary text-token-text-primary h-8 w-8"><svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-md" role="img"><text x="-9999" y="-9999">ChatGPT</text><path d="M37.5324 16.8707C37.9808 15.5241 38.1363 14.0974 37.9886 12.6859C37.8409 11.2744 37.3934 9.91076 36.676 8.68622C35.6126 6.83404 33.9882 5.3676 32.0373 4.4985C30.0864 3.62941 27.9098 3.40259 25.8215 3.85078C24.8796 2.7893 23.7219 1.94125 22.4257 1.36341C21.1295 0.785575 19.7249 0.491269 18.3058 0.500197C16.1708 0.495044 14.0893 1.16803 12.3614 2.42214C10.6335 3.67624 9.34853 5.44666 8.6917 7.47815C7.30085 7.76286 5.98686 8.3414 4.8377 9.17505C3.68854 10.0087 2.73073 11.0782 2.02839 12.312C0.956464 14.1591 0.498905 16.2988 0.721698 18.4228C0.944492 20.5467 1.83612 22.5449 3.268 24.1293C2.81966 25.4759 2.66413 26.9026 2.81182 28.3141C2.95951 29.7256 3.40701 31.0892 4.12437 32.3138C5.18791 34.1659 6.8123 35.6322 8.76321 36.5013C10.7141 37.3704 12.8907 37.5973 14.9789 37.1492C15.9208 38.2107 17.0786 39.0587 18.3747 39.6366C19.6709 40.2144 21.0755 40.5087 22.4946 40.4998C24.6307 40.5054 26.7133 39.8321 28.4418 38.5772C30.1704 37.3223 31.4556 35.5506 32.1119 33.5179C33.5027 33.2332 34.8167 32.6547 35.9659 31.821C37.115 30.9874 38.0728 29.9178 38.7752 28.684C39.8458 26.8371 40.3023 24.6979 40.0789 22.5748C39.8556 20.4517 38.9639 18.4544 37.5324 16.8707ZM22.4978 37.8849C20.7443 37.8874 19.0459 37.2733 17.6994 36.1501C17.7601 36.117 17.8666 36.0586 17.936 36.0161L25.9004 31.4156C26.1003 31.3019 26.2663 31.137 26.3813 30.9378C26.4964 30.7386 26.5563 30.5124 26.5549 30.2825V19.0542L29.9213 20.998C29.9389 21.0068 29.9541 21.0198 29.9656 21.0359C29.977 21.052 29.9842 21.0707 29.9867 21.0902V30.3889C29.9842 32.375 29.1946 34.2791 27.7909 35.6841C26.3872 37.0892 24.4838 37.8806 22.4978 37.8849ZM6.39227 31.0064C5.51397 29.4888 5.19742 27.7107 5.49804 25.9832C5.55718 26.0187 5.66048 26.0818 5.73461 26.1244L13.699 30.7248C13.8975 30.8408 14.1233 30.902 14.3532 30.902C14.583 30.902 14.8088 30.8408 15.0073 30.7248L24.731 25.1103V28.9979C24.7321 29.0177 24.7283 29.0376 24.7199 29.0556C24.7115 29.0736 24.6988 29.0893 24.6829 29.1012L16.6317 33.7497C14.9096 34.7416 12.8643 35.0097 10.9447 34.4954C9.02506 33.9811 7.38785 32.7263 6.39227 31.0064ZM4.29707 13.6194C5.17156 12.0998 6.55279 10.9364 8.19885 10.3327C8.19885 10.4013 8.19491 10.5228 8.19491 10.6071V19.808C8.19351 20.0378 8.25334 20.2638 8.36823 20.4629C8.48312 20.6619 8.64893 20.8267 8.84863 20.9404L18.5723 26.5542L15.206 28.4979C15.1894 28.5089 15.1703 28.5155 15.1505 28.5173C15.1307 28.5191 15.1107 28.516 15.0924 28.5082L7.04046 23.8557C5.32135 22.8601 4.06716 21.2235 3.55289 19.3046C3.03862 17.3858 3.30624 15.3413 4.29707 13.6194ZM31.955 20.0556L22.2312 14.4411L25.5976 12.4981C25.6142 12.4872 25.6333 12.4805 25.6531 12.4787C25.6729 12.4769 25.6928 12.4801 25.7111 12.4879L33.7631 17.1364C34.9967 17.849 36.0017 18.8982 36.6606 20.1613C37.3194 21.4244 37.6047 22.849 37.4832 24.2684C37.3617 25.6878 36.8382 27.0432 35.9743 28.1759C35.1103 29.3086 33.9415 30.1717 32.6047 30.6641C32.6047 30.5947 32.6047 30.4733 32.6047 30.3889V21.188C32.6066 20.9586 32.5474 20.7328 32.4332 20.5338C32.319 20.3348 32.154 20.1698 31.955 20.0556ZM35.3055 15.0128C35.2464 14.9765 35.1431 14.9142 35.069 14.8717L27.1045 10.2712C26.906 10.1554 26.6803 10.0943 26.4504 10.0943C26.2206 10.0943 25.9948 10.1554 25.7963 10.2712L16.0726 15.8858V11.9982C16.0715 11.9783 16.0753 11.9585 16.0837 11.9405C16.0921 11.9225 16.1048 11.9068 16.1207 11.8949L24.1719 7.25025C25.4053 6.53903 26.8158 6.19376 28.2383 6.25482C29.6608 6.31589 31.0364 6.78077 32.2044 7.59508C33.3723 8.40939 34.2842 9.53945 34.8334 10.8531C35.3826 12.1667 35.5464 13.6095 35.3055 15.0128ZM14.2424 21.9419L10.8752 19.9981C10.8576 19.9893 10.8423 19.9763 10.8309 19.9602C10.8195 19.9441 10.8122 19.9254 10.8098 19.9058V10.6071C10.8107 9.18295 11.2173 7.78848 11.9819 6.58696C12.7466 5.38544 13.8377 4.42659 15.1275 3.82264C16.4173 3.21869 17.8524 2.99464 19.2649 3.1767C20.6775 3.35876 22.0089 3.93941 23.1034 4.85067C23.0427 4.88379 22.937 4.94215 22.8668 4.98473L14.9024 9.58517C14.7025 9.69878 14.5366 9.86356 14.4215 10.0626C14.3065 10.2616 14.2466 10.4877 14.2479 10.7175L14.2424 21.9419ZM16.071 17.9991L20.4018 15.4978L24.7325 17.9975V22.9985L20.4018 25.4983L16.071 22.9985V17.9991Z" fill="currentColor"></path></svg></div></div></div></div></div><div class="group/conversation-turn relative flex w-full min-w-0 flex-col agent-turn"><div class="flex-col gap-1 md:gap-3"><div class="flex max-w-full flex-col flex-grow"><p class="first:mt-0 my-1.5 relative h-8 text-token-text-secondary hover:text-token-text-primary"></p><div class="group absolute left-0 top-0 mr-1.5 h-8 overflow-hidden mt-1"><button class="" style="opacity: 1;"><div class="flex items-center justify-start gap-1"><span>Thought for 7 seconds</span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-md"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 9.29289C5.68342 8.90237 6.31658 8.90237 6.70711 9.29289L12 14.5858L17.2929 9.29289C17.6834 8.90237 18.3166 8.90237 18.7071 9.29289C19.0976 9.68342 19.0976 10.3166 18.7071 10.7071L12.7071 16.7071C12.5196 16.8946 12.2652 17 12 17C11.7348 17 11.4804 16.8946 11.2929 16.7071L5.29289 10.7071C4.90237 10.3166 4.90237 9.68342 5.29289 9.29289Z" fill="currentColor"></path></svg></div></button></div><p></p><div data-message-author-role="assistant" data-message-id="c3031684-d51c-496b-8c54-c2c2c9fab5cf" dir="auto" class="min-h-[20px] text-message flex w-full flex-col items-end gap-2 whitespace-normal break-words [.text-message+&amp;]:mt-5"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert dark"><p>抱歉，之前的代码中有一个错误，<code>clock</code> 变量在 <code>main()</code> 函数中定义，但在 <code>game_loop()</code> 函数中使用时未被正确引用，导致了 <code>NameError</code>。下面是修正后的代码：</p><pre class="!overflow-visible"><div class="dark bg-gray-950 contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative"><div class="flex items-center text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md h-9">python</div><div class="sticky top-9 md:top-[5.75rem]"><div class="absolute bottom-0 right-2 flex h-9 items-center"><div class="flex items-center rounded bg-token-main-surface-secondary px-2 font-sans text-xs text-token-text-secondary"><span class="" data-state="closed"></span></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-python"><span class="hljs-keyword">import</span> pygame
+<span class="hljs-keyword">import</span> sys
+<span class="hljs-keyword">import</span> random
+
+<span class="hljs-comment"># 初始化 Pygame</span>
+pygame.init()
+
+<span class="hljs-comment"># 设置屏幕大小</span>
+SCREEN_WIDTH = <span class="hljs-number">200</span>
+SCREEN_HEIGHT = <span class="hljs-number">200</span>
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption(<span class="hljs-string">'贪食蛇'</span>)
+
+<span class="hljs-comment"># 定义颜色</span>
+BLACK = pygame.Color(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+WHITE = pygame.Color(<span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>)
+GREEN = pygame.Color(<span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>)
+RED = pygame.Color(<span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+
+<span class="hljs-comment"># 定义蛇的块大小</span>
+BLOCK_SIZE = <span class="hljs-number">10</span>
+
+<span class="hljs-comment"># 字体设置</span>
+font = pygame.font.SysFont(<span class="hljs-string">'Arial'</span>, <span class="hljs-number">20</span>)
+
+<span class="hljs-comment"># 游戏主函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():
+    level = <span class="hljs-number">1</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        game_loop(level)
+        level += <span class="hljs-number">1</span>
+
+<span class="hljs-comment"># 游戏循环函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">game_loop</span>(<span class="hljs-params">level</span>):
+    <span class="hljs-comment"># 初始化时钟</span>
+    clock = pygame.time.Clock()
+
+    <span class="hljs-comment"># 初始化蛇</span>
+    snake_pos = [<span class="hljs-number">100</span>, <span class="hljs-number">100</span>]
+    snake_body = [snake_pos[:]]
+    direction = <span class="hljs-string">'STOP'</span>
+    change_to = direction
+
+    <span class="hljs-comment"># 初始化食物</span>
+    food_pos = get_food_position(snake_body)
+    food_spawn = <span class="hljs-literal">True</span>
+
+    <span class="hljs-comment"># 初始速度</span>
+    speed = level
+
+    <span class="hljs-comment"># 计分</span>
+    score = <span class="hljs-number">1</span>
+
+    <span class="hljs-comment"># 游戏开始界面</span>
+    start_game = <span class="hljs-literal">False</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> start_game:
+        screen.fill(BLACK)
+        show_message(<span class="hljs-string">'按任意键开始'</span>, WHITE, SCREEN_WIDTH / <span class="hljs-number">2</span>, SCREEN_HEIGHT / <span class="hljs-number">2</span>)
+        pygame.display.flip()
+        <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.KEYDOWN:
+                start_game = <span class="hljs-literal">True</span>
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+    <span class="hljs-comment"># 主游戏循环</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            <span class="hljs-comment"># 键盘输入</span>
+            <span class="hljs-keyword">elif</span> event.<span class="hljs-built_in">type</span> == pygame.KEYDOWN:
+                <span class="hljs-keyword">if</span> event.key == pygame.K_UP <span class="hljs-keyword">and</span> direction != <span class="hljs-string">'DOWN'</span>:
+                    change_to = <span class="hljs-string">'UP'</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_DOWN <span class="hljs-keyword">and</span> direction != <span class="hljs-string">'UP'</span>:
+                    change_to = <span class="hljs-string">'DOWN'</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_LEFT <span class="hljs-keyword">and</span> direction != <span class="hljs-string">'RIGHT'</span>:
+                    change_to = <span class="hljs-string">'LEFT'</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_RIGHT <span class="hljs-keyword">and</span> direction != <span class="hljs-string">'LEFT'</span>:
+                    change_to = <span class="hljs-string">'RIGHT'</span>
+
+        <span class="hljs-comment"># 如果有方向改变，更新方向</span>
+        <span class="hljs-keyword">if</span> change_to != <span class="hljs-string">'STOP'</span>:
+            direction = change_to
+
+        <span class="hljs-comment"># 根据方向移动蛇</span>
+        <span class="hljs-keyword">if</span> direction == <span class="hljs-string">'UP'</span>:
+            snake_pos[<span class="hljs-number">1</span>] -= BLOCK_SIZE
+        <span class="hljs-keyword">if</span> direction == <span class="hljs-string">'DOWN'</span>:
+            snake_pos[<span class="hljs-number">1</span>] += BLOCK_SIZE
+        <span class="hljs-keyword">if</span> direction == <span class="hljs-string">'LEFT'</span>:
+            snake_pos[<span class="hljs-number">0</span>] -= BLOCK_SIZE
+        <span class="hljs-keyword">if</span> direction == <span class="hljs-string">'RIGHT'</span>:
+            snake_pos[<span class="hljs-number">0</span>] += BLOCK_SIZE
+
+        <span class="hljs-comment"># 增加蛇的长度</span>
+        <span class="hljs-keyword">if</span> direction != <span class="hljs-string">'STOP'</span>:
+            snake_body.insert(<span class="hljs-number">0</span>, <span class="hljs-built_in">list</span>(snake_pos))
+            <span class="hljs-keyword">if</span> snake_pos == food_pos:
+                score += <span class="hljs-number">1</span>
+                food_spawn = <span class="hljs-literal">False</span>
+            <span class="hljs-keyword">else</span>:
+                snake_body.pop()
+
+        <span class="hljs-comment"># 食物重生</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> food_spawn:
+            food_pos = get_food_position(snake_body)
+            food_spawn = <span class="hljs-literal">True</span>
+
+        <span class="hljs-comment"># 填充背景</span>
+        screen.fill(BLACK)
+
+        <span class="hljs-comment"># 画蛇</span>
+        <span class="hljs-keyword">for</span> pos <span class="hljs-keyword">in</span> snake_body:
+            pygame.draw.rect(screen, GREEN, pygame.Rect(pos[<span class="hljs-number">0</span>], pos[<span class="hljs-number">1</span>], BLOCK_SIZE, BLOCK_SIZE))
+
+        <span class="hljs-comment"># 画食物</span>
+        pygame.draw.rect(screen, RED, pygame.Rect(food_pos[<span class="hljs-number">0</span>], food_pos[<span class="hljs-number">1</span>], BLOCK_SIZE, BLOCK_SIZE))
+
+        <span class="hljs-comment"># 边界检测</span>
+        <span class="hljs-keyword">if</span> snake_pos[<span class="hljs-number">0</span>] &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> snake_pos[<span class="hljs-number">0</span>] &gt; SCREEN_WIDTH - BLOCK_SIZE:
+            game_over()
+            <span class="hljs-keyword">return</span>
+        <span class="hljs-keyword">if</span> snake_pos[<span class="hljs-number">1</span>] &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> snake_pos[<span class="hljs-number">1</span>] &gt; SCREEN_HEIGHT - BLOCK_SIZE:
+            game_over()
+            <span class="hljs-keyword">return</span>
+
+        <span class="hljs-comment"># 自身碰撞检测</span>
+        <span class="hljs-keyword">for</span> block <span class="hljs-keyword">in</span> snake_body[<span class="hljs-number">1</span>:]:
+            <span class="hljs-keyword">if</span> snake_pos == block:
+                game_over()
+                <span class="hljs-keyword">return</span>
+
+        <span class="hljs-comment"># 当蛇的长度达到10，进入下一关</span>
+        <span class="hljs-keyword">if</span> score &gt;= <span class="hljs-number">10</span>:
+            show_continue()
+            <span class="hljs-keyword">return</span>
+
+        <span class="hljs-comment"># 刷新屏幕</span>
+        pygame.display.flip()
+
+        <span class="hljs-comment"># 控制游戏速度</span>
+        clock.tick(<span class="hljs-number">5</span> * speed)
+
+<span class="hljs-comment"># 获取食物位置函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">get_food_position</span>(<span class="hljs-params">snake_body</span>):
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        x = random.randrange(<span class="hljs-number">0</span>, SCREEN_WIDTH, BLOCK_SIZE)
+        y = random.randrange(<span class="hljs-number">0</span>, SCREEN_HEIGHT, BLOCK_SIZE)
+        <span class="hljs-keyword">if</span> [x, y] <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> snake_body:
+            <span class="hljs-keyword">return</span> [x, y]
+
+<span class="hljs-comment"># 游戏结束函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">game_over</span>():
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        screen.fill(BLACK)
+        show_message(<span class="hljs-string">'游戏结束，按R重新开始'</span>, WHITE, SCREEN_WIDTH / <span class="hljs-number">2</span>, SCREEN_HEIGHT / <span class="hljs-number">2</span>)
+        pygame.display.flip()
+        <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.KEYDOWN:
+                <span class="hljs-keyword">if</span> event.key == pygame.K_r:
+                    main()
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+<span class="hljs-comment"># 显示继续函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">show_continue</span>():
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        screen.fill(BLACK)
+        show_message(<span class="hljs-string">'进入下一关，按C继续'</span>, WHITE, SCREEN_WIDTH / <span class="hljs-number">2</span>, SCREEN_HEIGHT / <span class="hljs-number">2</span>)
+        pygame.display.flip()
+        <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.KEYDOWN:
+                <span class="hljs-keyword">if</span> event.key == pygame.K_c:
+                    <span class="hljs-keyword">return</span>
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+<span class="hljs-comment"># 显示信息函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">show_message</span>(<span class="hljs-params">message, color, x, y</span>):
+    text = font.render(message, <span class="hljs-literal">True</span>, color)
+    rect = text.get_rect(center=(x, y))
+    screen.blit(text, rect)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    main()
+</code></div></div></pre><p><strong>修改说明：</strong></p><ul><li><strong><code>clock</code> 的位置调整</strong>：将 <code>clock = pygame.time.Clock()</code> 从 <code>main()</code> 函数中移到了 <code>game_loop()</code> 函数的开头。这是因为 <code>clock</code> 变量在 <code>game_loop()</code> 函数中使用，需要在该函数内进行定义。</li></ul><p><strong>运行方法：</strong></p><ol><li>将上述代码保存为 <code>snake_game.py</code>。</li><li>确保已安装 Pygame，未安装可运行 <code>pip install pygame</code>。</li><li>在命令行中运行 <code>python snake_game.py</code>。</li><li>按提示操作，使用键盘的上下左右箭头控制贪食蛇移动。</li></ol><p><strong>游戏说明：</strong></p><ul><li>游戏开始时，贪食蛇长度为1，速度为1，等待玩家输入方向指令。</li><li>使用键盘的 <strong>上下左右箭头键</strong> 控制贪食蛇的移动方向。</li><li>当贪食蛇的长度达到10时，当前关卡结束，按 <strong>C 键</strong> 继续进入下一关。</li><li>每通过一关，贪食蛇的速度增加1，例如第二关速度为2，第三关速度为3。</li><li>如果贪食蛇碰到自己的身体或墙壁，游戏结束，按 <strong>R 键</strong> 重新开始游戏。</li></ul><p>再次对给您带来的不便表示歉意，希望现在的代码能够正常运行，祝您游戏愉快！</p></div></div></div></div><div class="mt-1 flex gap-3 empty:hidden -ml-2"></div><div class="pr-2 lg:pr-0"></div></div></div></div></div></article><article class="w-full text-token-text-primary focus-visible:outline-2 focus-visible:outline-offset-[-4px]" dir="auto" data-testid="conversation-turn-6" data-scroll-anchor="false"><h5 class="sr-only">您说：</h5><div class="text-base py-[18px] px-3 md:px-4 m-auto w-full md:px-5 lg:px-4 xl:px-5"><div class="mx-auto flex flex-1 gap-4 text-base md:gap-5 lg:gap-6 md:max-w-3xl"><div class="group/conversation-turn relative flex w-full min-w-0 flex-col"><div class="flex-col gap-1 md:gap-3"><div class="flex max-w-full flex-col flex-grow"><div data-message-author-role="user" data-message-id="750de167-2cfc-454b-b20b-9941f7cb9fea" dir="auto" class="min-h-[20px] text-message flex w-full flex-col items-end gap-2 whitespace-normal break-words [.text-message+&amp;]:mt-5"><div class="flex w-full flex-col gap-1 empty:hidden items-end rtl:items-start"><div class="relative max-w-[70%] rounded-3xl px-5 py-2.5 bg-[#f4f4f4] dark:bg-token-main-surface-secondary"><div class="whitespace-pre-wrap">游戏页面无法正常显示中文，把游戏页面所有输出改成英文吧</div><div class="absolute bottom-0 right-full top-0 -mr-3.5 hidden pr-5 pt-1 [.group\/conversation-turn:hover_&amp;]:block"><span class="" data-state="closed"></span></div></div></div></div></div></div></div></div></div></article><article class="w-full text-token-text-primary focus-visible:outline-2 focus-visible:outline-offset-[-4px]" dir="auto" data-testid="conversation-turn-7" data-scroll-anchor="false"><h5 class="sr-only"></h5><div class="text-base py-[18px] px-3 md:px-4 m-auto w-full md:px-5 lg:px-4 xl:px-5"><div class="mx-auto flex flex-1 gap-4 text-base md:gap-5 lg:gap-6 md:max-w-3xl"><div class="flex-shrink-0 flex flex-col relative items-end"><div><div class="pt-0"><div class="gizmo-bot-avatar flex h-8 w-8 items-center justify-center overflow-hidden rounded-full"><div class="relative p-1 rounded-sm flex items-center justify-center bg-token-main-surface-primary text-token-text-primary h-8 w-8"><svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-md" role="img"><text x="-9999" y="-9999">ChatGPT</text><path d="M37.5324 16.8707C37.9808 15.5241 38.1363 14.0974 37.9886 12.6859C37.8409 11.2744 37.3934 9.91076 36.676 8.68622C35.6126 6.83404 33.9882 5.3676 32.0373 4.4985C30.0864 3.62941 27.9098 3.40259 25.8215 3.85078C24.8796 2.7893 23.7219 1.94125 22.4257 1.36341C21.1295 0.785575 19.7249 0.491269 18.3058 0.500197C16.1708 0.495044 14.0893 1.16803 12.3614 2.42214C10.6335 3.67624 9.34853 5.44666 8.6917 7.47815C7.30085 7.76286 5.98686 8.3414 4.8377 9.17505C3.68854 10.0087 2.73073 11.0782 2.02839 12.312C0.956464 14.1591 0.498905 16.2988 0.721698 18.4228C0.944492 20.5467 1.83612 22.5449 3.268 24.1293C2.81966 25.4759 2.66413 26.9026 2.81182 28.3141C2.95951 29.7256 3.40701 31.0892 4.12437 32.3138C5.18791 34.1659 6.8123 35.6322 8.76321 36.5013C10.7141 37.3704 12.8907 37.5973 14.9789 37.1492C15.9208 38.2107 17.0786 39.0587 18.3747 39.6366C19.6709 40.2144 21.0755 40.5087 22.4946 40.4998C24.6307 40.5054 26.7133 39.8321 28.4418 38.5772C30.1704 37.3223 31.4556 35.5506 32.1119 33.5179C33.5027 33.2332 34.8167 32.6547 35.9659 31.821C37.115 30.9874 38.0728 29.9178 38.7752 28.684C39.8458 26.8371 40.3023 24.6979 40.0789 22.5748C39.8556 20.4517 38.9639 18.4544 37.5324 16.8707ZM22.4978 37.8849C20.7443 37.8874 19.0459 37.2733 17.6994 36.1501C17.7601 36.117 17.8666 36.0586 17.936 36.0161L25.9004 31.4156C26.1003 31.3019 26.2663 31.137 26.3813 30.9378C26.4964 30.7386 26.5563 30.5124 26.5549 30.2825V19.0542L29.9213 20.998C29.9389 21.0068 29.9541 21.0198 29.9656 21.0359C29.977 21.052 29.9842 21.0707 29.9867 21.0902V30.3889C29.9842 32.375 29.1946 34.2791 27.7909 35.6841C26.3872 37.0892 24.4838 37.8806 22.4978 37.8849ZM6.39227 31.0064C5.51397 29.4888 5.19742 27.7107 5.49804 25.9832C5.55718 26.0187 5.66048 26.0818 5.73461 26.1244L13.699 30.7248C13.8975 30.8408 14.1233 30.902 14.3532 30.902C14.583 30.902 14.8088 30.8408 15.0073 30.7248L24.731 25.1103V28.9979C24.7321 29.0177 24.7283 29.0376 24.7199 29.0556C24.7115 29.0736 24.6988 29.0893 24.6829 29.1012L16.6317 33.7497C14.9096 34.7416 12.8643 35.0097 10.9447 34.4954C9.02506 33.9811 7.38785 32.7263 6.39227 31.0064ZM4.29707 13.6194C5.17156 12.0998 6.55279 10.9364 8.19885 10.3327C8.19885 10.4013 8.19491 10.5228 8.19491 10.6071V19.808C8.19351 20.0378 8.25334 20.2638 8.36823 20.4629C8.48312 20.6619 8.64893 20.8267 8.84863 20.9404L18.5723 26.5542L15.206 28.4979C15.1894 28.5089 15.1703 28.5155 15.1505 28.5173C15.1307 28.5191 15.1107 28.516 15.0924 28.5082L7.04046 23.8557C5.32135 22.8601 4.06716 21.2235 3.55289 19.3046C3.03862 17.3858 3.30624 15.3413 4.29707 13.6194ZM31.955 20.0556L22.2312 14.4411L25.5976 12.4981C25.6142 12.4872 25.6333 12.4805 25.6531 12.4787C25.6729 12.4769 25.6928 12.4801 25.7111 12.4879L33.7631 17.1364C34.9967 17.849 36.0017 18.8982 36.6606 20.1613C37.3194 21.4244 37.6047 22.849 37.4832 24.2684C37.3617 25.6878 36.8382 27.0432 35.9743 28.1759C35.1103 29.3086 33.9415 30.1717 32.6047 30.6641C32.6047 30.5947 32.6047 30.4733 32.6047 30.3889V21.188C32.6066 20.9586 32.5474 20.7328 32.4332 20.5338C32.319 20.3348 32.154 20.1698 31.955 20.0556ZM35.3055 15.0128C35.2464 14.9765 35.1431 14.9142 35.069 14.8717L27.1045 10.2712C26.906 10.1554 26.6803 10.0943 26.4504 10.0943C26.2206 10.0943 25.9948 10.1554 25.7963 10.2712L16.0726 15.8858V11.9982C16.0715 11.9783 16.0753 11.9585 16.0837 11.9405C16.0921 11.9225 16.1048 11.9068 16.1207 11.8949L24.1719 7.25025C25.4053 6.53903 26.8158 6.19376 28.2383 6.25482C29.6608 6.31589 31.0364 6.78077 32.2044 7.59508C33.3723 8.40939 34.2842 9.53945 34.8334 10.8531C35.3826 12.1667 35.5464 13.6095 35.3055 15.0128ZM14.2424 21.9419L10.8752 19.9981C10.8576 19.9893 10.8423 19.9763 10.8309 19.9602C10.8195 19.9441 10.8122 19.9254 10.8098 19.9058V10.6071C10.8107 9.18295 11.2173 7.78848 11.9819 6.58696C12.7466 5.38544 13.8377 4.42659 15.1275 3.82264C16.4173 3.21869 17.8524 2.99464 19.2649 3.1767C20.6775 3.35876 22.0089 3.93941 23.1034 4.85067C23.0427 4.88379 22.937 4.94215 22.8668 4.98473L14.9024 9.58517C14.7025 9.69878 14.5366 9.86356 14.4215 10.0626C14.3065 10.2616 14.2466 10.4877 14.2479 10.7175L14.2424 21.9419ZM16.071 17.9991L20.4018 15.4978L24.7325 17.9975V22.9985L20.4018 25.4983L16.071 22.9985V17.9991Z" fill="currentColor"></path></svg></div></div></div></div></div><div class="group/conversation-turn relative flex w-full min-w-0 flex-col agent-turn"><div class="flex-col gap-1 md:gap-3"><div class="flex max-w-full flex-col flex-grow"><p class="first:mt-0 my-1.5 relative h-8 text-token-text-secondary hover:text-token-text-primary"></p><div class="group absolute left-0 top-0 mr-1.5 h-8 overflow-hidden mt-1"><button class="" style="opacity: 1;"><div class="flex items-center justify-start gap-1"><span>Thought for 5 seconds</span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-md"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 9.29289C5.68342 8.90237 6.31658 8.90237 6.70711 9.29289L12 14.5858L17.2929 9.29289C17.6834 8.90237 18.3166 8.90237 18.7071 9.29289C19.0976 9.68342 19.0976 10.3166 18.7071 10.7071L12.7071 16.7071C12.5196 16.8946 12.2652 17 12 17C11.7348 17 11.4804 16.8946 11.2929 16.7071L5.29289 10.7071C4.90237 10.3166 4.90237 9.68342 5.29289 9.29289Z" fill="currentColor"></path></svg></div></button></div><p></p><div data-message-author-role="assistant" data-message-id="ad3e085b-d84b-4be3-9dfd-8d629c683573" dir="auto" class="min-h-[20px] text-message flex w-full flex-col items-end gap-2 whitespace-normal break-words [.text-message+&amp;]:mt-5"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert dark"><p>抱歉给您带来不便。由于游戏界面无法正常显示中文，我已将所有游戏界面上的提示和信息更改为英文。以下是修改后的代码：</p><pre class="!overflow-visible"><div class="dark bg-gray-950 contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative"><div class="flex items-center text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md h-9">python</div><div class="sticky top-9 md:top-[5.75rem]"><div class="absolute bottom-0 right-2 flex h-9 items-center"><div class="flex items-center rounded bg-token-main-surface-secondary px-2 font-sans text-xs text-token-text-secondary"><span class="" data-state="closed"></span></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-python"><span class="hljs-keyword">import</span> pygame
+<span class="hljs-keyword">import</span> sys
+<span class="hljs-keyword">import</span> random
+
+<span class="hljs-comment"># 初始化 Pygame</span>
+pygame.init()
+
+<span class="hljs-comment"># 设置屏幕大小</span>
+SCREEN_WIDTH = <span class="hljs-number">200</span>
+SCREEN_HEIGHT = <span class="hljs-number">200</span>
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption(<span class="hljs-string">'Snake Game'</span>)
+
+<span class="hljs-comment"># 定义颜色</span>
+BLACK = pygame.Color(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+WHITE = pygame.Color(<span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>)
+GREEN = pygame.Color(<span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>)
+RED = pygame.Color(<span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+
+<span class="hljs-comment"># 定义蛇的块大小</span>
+BLOCK_SIZE = <span class="hljs-number">10</span>
+
+<span class="hljs-comment"># 字体设置</span>
+font = pygame.font.SysFont(<span class="hljs-string">'Arial'</span>, <span class="hljs-number">20</span>)
+
+<span class="hljs-comment"># 游戏主函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():
+    level = <span class="hljs-number">1</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        game_loop(level)
+        level += <span class="hljs-number">1</span>
+
+<span class="hljs-comment"># 游戏循环函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">game_loop</span>(<span class="hljs-params">level</span>):
+    <span class="hljs-comment"># 初始化时钟</span>
+    clock = pygame.time.Clock()
+
+    <span class="hljs-comment"># 初始化蛇</span>
+    snake_pos = [<span class="hljs-number">100</span>, <span class="hljs-number">100</span>]
+    snake_body = [snake_pos[:]]
+    direction = <span class="hljs-string">'STOP'</span>
+    change_to = direction
+
+    <span class="hljs-comment"># 初始化食物</span>
+    food_pos = get_food_position(snake_body)
+    food_spawn = <span class="hljs-literal">True</span>
+
+    <span class="hljs-comment"># 初始速度</span>
+    speed = level
+
+    <span class="hljs-comment"># 计分</span>
+    score = <span class="hljs-number">1</span>
+
+    <span class="hljs-comment"># 游戏开始界面</span>
+    start_game = <span class="hljs-literal">False</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> start_game:
+        screen.fill(BLACK)
+        show_message(<span class="hljs-string">'Press any key to start'</span>, WHITE, SCREEN_WIDTH / <span class="hljs-number">2</span>, SCREEN_HEIGHT / <span class="hljs-number">2</span>)
+        pygame.display.flip()
+        <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.KEYDOWN:
+                start_game = <span class="hljs-literal">True</span>
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+    <span class="hljs-comment"># 主游戏循环</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            <span class="hljs-comment"># 键盘输入</span>
+            <span class="hljs-keyword">elif</span> event.<span class="hljs-built_in">type</span> == pygame.KEYDOWN:
+                <span class="hljs-keyword">if</span> event.key == pygame.K_UP <span class="hljs-keyword">and</span> direction != <span class="hljs-string">'DOWN'</span>:
+                    change_to = <span class="hljs-string">'UP'</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_DOWN <span class="hljs-keyword">and</span> direction != <span class="hljs-string">'UP'</span>:
+                    change_to = <span class="hljs-string">'DOWN'</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_LEFT <span class="hljs-keyword">and</span> direction != <span class="hljs-string">'RIGHT'</span>:
+                    change_to = <span class="hljs-string">'LEFT'</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_RIGHT <span class="hljs-keyword">and</span> direction != <span class="hljs-string">'LEFT'</span>:
+                    change_to = <span class="hljs-string">'RIGHT'</span>
+
+        <span class="hljs-comment"># 如果有方向改变，更新方向</span>
+        <span class="hljs-keyword">if</span> change_to != <span class="hljs-string">'STOP'</span>:
+            direction = change_to
+
+        <span class="hljs-comment"># 根据方向移动蛇</span>
+        <span class="hljs-keyword">if</span> direction == <span class="hljs-string">'UP'</span>:
+            snake_pos[<span class="hljs-number">1</span>] -= BLOCK_SIZE
+        <span class="hljs-keyword">if</span> direction == <span class="hljs-string">'DOWN'</span>:
+            snake_pos[<span class="hljs-number">1</span>] += BLOCK_SIZE
+        <span class="hljs-keyword">if</span> direction == <span class="hljs-string">'LEFT'</span>:
+            snake_pos[<span class="hljs-number">0</span>] -= BLOCK_SIZE
+        <span class="hljs-keyword">if</span> direction == <span class="hljs-string">'RIGHT'</span>:
+            snake_pos[<span class="hljs-number">0</span>] += BLOCK_SIZE
+
+        <span class="hljs-comment"># 增加蛇的长度</span>
+        <span class="hljs-keyword">if</span> direction != <span class="hljs-string">'STOP'</span>:
+            snake_body.insert(<span class="hljs-number">0</span>, <span class="hljs-built_in">list</span>(snake_pos))
+            <span class="hljs-keyword">if</span> snake_pos == food_pos:
+                score += <span class="hljs-number">1</span>
+                food_spawn = <span class="hljs-literal">False</span>
+            <span class="hljs-keyword">else</span>:
+                snake_body.pop()
+
+        <span class="hljs-comment"># 食物重生</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> food_spawn:
+            food_pos = get_food_position(snake_body)
+            food_spawn = <span class="hljs-literal">True</span>
+
+        <span class="hljs-comment"># 填充背景</span>
+        screen.fill(BLACK)
+
+        <span class="hljs-comment"># 画蛇</span>
+        <span class="hljs-keyword">for</span> pos <span class="hljs-keyword">in</span> snake_body:
+            pygame.draw.rect(screen, GREEN, pygame.Rect(pos[<span class="hljs-number">0</span>], pos[<span class="hljs-number">1</span>], BLOCK_SIZE, BLOCK_SIZE))
+
+        <span class="hljs-comment"># 画食物</span>
+        pygame.draw.rect(screen, RED, pygame.Rect(food_pos[<span class="hljs-number">0</span>], food_pos[<span class="hljs-number">1</span>], BLOCK_SIZE, BLOCK_SIZE))
+
+        <span class="hljs-comment"># 边界检测</span>
+        <span class="hljs-keyword">if</span> snake_pos[<span class="hljs-number">0</span>] &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> snake_pos[<span class="hljs-number">0</span>] &gt; SCREEN_WIDTH - BLOCK_SIZE:
+            game_over()
+            <span class="hljs-keyword">return</span>
+        <span class="hljs-keyword">if</span> snake_pos[<span class="hljs-number">1</span>] &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> snake_pos[<span class="hljs-number">1</span>] &gt; SCREEN_HEIGHT - BLOCK_SIZE:
+            game_over()
+            <span class="hljs-keyword">return</span>
+
+        <span class="hljs-comment"># 自身碰撞检测</span>
+        <span class="hljs-keyword">for</span> block <span class="hljs-keyword">in</span> snake_body[<span class="hljs-number">1</span>:]:
+            <span class="hljs-keyword">if</span> snake_pos == block:
+                game_over()
+                <span class="hljs-keyword">return</span>
+
+        <span class="hljs-comment"># 当蛇的长度达到10，进入下一关</span>
+        <span class="hljs-keyword">if</span> score &gt;= <span class="hljs-number">10</span>:
+            show_continue()
+            <span class="hljs-keyword">return</span>
+
+        <span class="hljs-comment"># 刷新屏幕</span>
+        pygame.display.flip()
+
+        <span class="hljs-comment"># 控制游戏速度</span>
+        clock.tick(<span class="hljs-number">5</span> * speed)
+
+<span class="hljs-comment"># 获取食物位置函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">get_food_position</span>(<span class="hljs-params">snake_body</span>):
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        x = random.randrange(<span class="hljs-number">0</span>, SCREEN_WIDTH, BLOCK_SIZE)
+        y = random.randrange(<span class="hljs-number">0</span>, SCREEN_HEIGHT, BLOCK_SIZE)
+        <span class="hljs-keyword">if</span> [x, y] <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> snake_body:
+            <span class="hljs-keyword">return</span> [x, y]
+
+<span class="hljs-comment"># 游戏结束函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">game_over</span>():
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        screen.fill(BLACK)
+        show_message(<span class="hljs-string">'Game Over, press R to restart'</span>, WHITE, SCREEN_WIDTH / <span class="hljs-number">2</span>, SCREEN_HEIGHT / <span class="hljs-number">2</span>)
+        pygame.display.flip()
+        <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.KEYDOWN:
+                <span class="hljs-keyword">if</span> event.key == pygame.K_r:
+                    main()
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+<span class="hljs-comment"># 显示继续函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">show_continue</span>():
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        screen.fill(BLACK)
+        show_message(<span class="hljs-string">'Level Complete, press C to continue'</span>, WHITE, SCREEN_WIDTH / <span class="hljs-number">2</span>, SCREEN_HEIGHT / <span class="hljs-number">2</span>)
+        pygame.display.flip()
+        <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.KEYDOWN:
+                <span class="hljs-keyword">if</span> event.key == pygame.K_c:
+                    <span class="hljs-keyword">return</span>
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+<span class="hljs-comment"># 显示信息函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">show_message</span>(<span class="hljs-params">message, color, x, y</span>):
+    text = font.render(message, <span class="hljs-literal">True</span>, color)
+    rect = text.get_rect(center=(x, y))
+    screen.blit(text, rect)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    main()
+</code></div></div></pre><p><strong>修改说明：</strong></p><ul><li><strong>游戏标题</strong>：将窗口标题从 <code>'贪食蛇'</code> 修改为 <code>'Snake Game'</code>。</li><li><strong>开始界面提示</strong>：将 <code>'按任意键开始'</code> 修改为 <code>'Press any key to start'</code>。</li><li><strong>游戏结束提示</strong>：将 <code>'游戏结束，按R重新开始'</code> 修改为 <code>'Game Over, press R to restart'</code>。</li><li><strong>关卡完成提示</strong>：将 <code>'进入下一关，按C继续'</code> 修改为 <code>'Level Complete, press C to continue'</code>。</li></ul><p><strong>运行方法：</strong></p><ol><li>将上述代码保存为 <code>snake_game.py</code>。</li><li>确保已安装 Pygame，未安装可运行 <code>pip install pygame</code>。</li><li>在命令行中运行 <code>python snake_game.py</code>。</li><li>按提示操作，使用键盘的上下左右箭头控制贪食蛇移动。</li></ol><p><strong>游戏说明：</strong></p><ul><li>游戏开始时，贪食蛇长度为1，速度为1，等待玩家输入方向指令。</li><li>使用键盘的 <strong>上下左右箭头键</strong> 控制贪食蛇的移动方向。</li><li>当贪食蛇的长度达到10时，当前关卡结束，按 <strong>C 键</strong> 继续进入下一关。</li><li>每通过一关，贪食蛇的速度增加1，例如第二关速度为2，第三关速度为3。</li><li>如果贪食蛇碰到自己的身体或墙壁，游戏结束，按 <strong>R 键</strong> 重新开始游戏。</li></ul><p>希望现在的代码能够正常显示并满足您的需求，祝您游戏愉快！</p></div></div></div></div><div class="mt-1 flex gap-3 empty:hidden -ml-2"></div><div class="pr-2 lg:pr-0"></div></div></div></div></div></article><article class="w-full text-token-text-primary focus-visible:outline-2 focus-visible:outline-offset-[-4px]" dir="auto" data-testid="conversation-turn-8" data-scroll-anchor="false"><h5 class="sr-only">您说：</h5><div class="text-base py-[18px] px-3 md:px-4 m-auto w-full md:px-5 lg:px-4 xl:px-5"><div class="mx-auto flex flex-1 gap-4 text-base md:gap-5 lg:gap-6 md:max-w-3xl"><div class="group/conversation-turn relative flex w-full min-w-0 flex-col"><div class="flex-col gap-1 md:gap-3"><div class="flex max-w-full flex-col flex-grow"><div data-message-author-role="user" data-message-id="7dee8af1-b660-44cf-abea-5eddcf26b79c" dir="auto" class="min-h-[20px] text-message flex w-full flex-col items-end gap-2 whitespace-normal break-words [.text-message+&amp;]:mt-5"><div class="flex w-full flex-col gap-1 empty:hidden items-end rtl:items-start"><div class="relative max-w-[70%] rounded-3xl px-5 py-2.5 bg-[#f4f4f4] dark:bg-token-main-surface-secondary"><div class="whitespace-pre-wrap">游戏显示的UI页面等比例放大，显示的文字信息，精简一下，因为目前显示的信息，游戏页面放不下</div><div class="absolute bottom-0 right-full top-0 -mr-3.5 hidden pr-5 pt-1 [.group\/conversation-turn:hover_&amp;]:block"><span class="" data-state="closed"></span></div></div></div></div></div></div></div></div></div></article><article class="w-full text-token-text-primary focus-visible:outline-2 focus-visible:outline-offset-[-4px]" dir="auto" data-testid="conversation-turn-9" data-scroll-anchor="true"><h5 class="sr-only"></h5><div class="text-base py-[18px] px-3 md:px-4 m-auto w-full md:px-5 lg:px-4 xl:px-5"><div class="mx-auto flex flex-1 gap-4 text-base md:gap-5 lg:gap-6 md:max-w-3xl"><div class="flex-shrink-0 flex flex-col relative items-end"><div><div class="pt-0"><div class="gizmo-bot-avatar flex h-8 w-8 items-center justify-center overflow-hidden rounded-full"><div class="relative p-1 rounded-sm flex items-center justify-center bg-token-main-surface-primary text-token-text-primary h-8 w-8"><svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-md" role="img"><text x="-9999" y="-9999">ChatGPT</text><path d="M37.5324 16.8707C37.9808 15.5241 38.1363 14.0974 37.9886 12.6859C37.8409 11.2744 37.3934 9.91076 36.676 8.68622C35.6126 6.83404 33.9882 5.3676 32.0373 4.4985C30.0864 3.62941 27.9098 3.40259 25.8215 3.85078C24.8796 2.7893 23.7219 1.94125 22.4257 1.36341C21.1295 0.785575 19.7249 0.491269 18.3058 0.500197C16.1708 0.495044 14.0893 1.16803 12.3614 2.42214C10.6335 3.67624 9.34853 5.44666 8.6917 7.47815C7.30085 7.76286 5.98686 8.3414 4.8377 9.17505C3.68854 10.0087 2.73073 11.0782 2.02839 12.312C0.956464 14.1591 0.498905 16.2988 0.721698 18.4228C0.944492 20.5467 1.83612 22.5449 3.268 24.1293C2.81966 25.4759 2.66413 26.9026 2.81182 28.3141C2.95951 29.7256 3.40701 31.0892 4.12437 32.3138C5.18791 34.1659 6.8123 35.6322 8.76321 36.5013C10.7141 37.3704 12.8907 37.5973 14.9789 37.1492C15.9208 38.2107 17.0786 39.0587 18.3747 39.6366C19.6709 40.2144 21.0755 40.5087 22.4946 40.4998C24.6307 40.5054 26.7133 39.8321 28.4418 38.5772C30.1704 37.3223 31.4556 35.5506 32.1119 33.5179C33.5027 33.2332 34.8167 32.6547 35.9659 31.821C37.115 30.9874 38.0728 29.9178 38.7752 28.684C39.8458 26.8371 40.3023 24.6979 40.0789 22.5748C39.8556 20.4517 38.9639 18.4544 37.5324 16.8707ZM22.4978 37.8849C20.7443 37.8874 19.0459 37.2733 17.6994 36.1501C17.7601 36.117 17.8666 36.0586 17.936 36.0161L25.9004 31.4156C26.1003 31.3019 26.2663 31.137 26.3813 30.9378C26.4964 30.7386 26.5563 30.5124 26.5549 30.2825V19.0542L29.9213 20.998C29.9389 21.0068 29.9541 21.0198 29.9656 21.0359C29.977 21.052 29.9842 21.0707 29.9867 21.0902V30.3889C29.9842 32.375 29.1946 34.2791 27.7909 35.6841C26.3872 37.0892 24.4838 37.8806 22.4978 37.8849ZM6.39227 31.0064C5.51397 29.4888 5.19742 27.7107 5.49804 25.9832C5.55718 26.0187 5.66048 26.0818 5.73461 26.1244L13.699 30.7248C13.8975 30.8408 14.1233 30.902 14.3532 30.902C14.583 30.902 14.8088 30.8408 15.0073 30.7248L24.731 25.1103V28.9979C24.7321 29.0177 24.7283 29.0376 24.7199 29.0556C24.7115 29.0736 24.6988 29.0893 24.6829 29.1012L16.6317 33.7497C14.9096 34.7416 12.8643 35.0097 10.9447 34.4954C9.02506 33.9811 7.38785 32.7263 6.39227 31.0064ZM4.29707 13.6194C5.17156 12.0998 6.55279 10.9364 8.19885 10.3327C8.19885 10.4013 8.19491 10.5228 8.19491 10.6071V19.808C8.19351 20.0378 8.25334 20.2638 8.36823 20.4629C8.48312 20.6619 8.64893 20.8267 8.84863 20.9404L18.5723 26.5542L15.206 28.4979C15.1894 28.5089 15.1703 28.5155 15.1505 28.5173C15.1307 28.5191 15.1107 28.516 15.0924 28.5082L7.04046 23.8557C5.32135 22.8601 4.06716 21.2235 3.55289 19.3046C3.03862 17.3858 3.30624 15.3413 4.29707 13.6194ZM31.955 20.0556L22.2312 14.4411L25.5976 12.4981C25.6142 12.4872 25.6333 12.4805 25.6531 12.4787C25.6729 12.4769 25.6928 12.4801 25.7111 12.4879L33.7631 17.1364C34.9967 17.849 36.0017 18.8982 36.6606 20.1613C37.3194 21.4244 37.6047 22.849 37.4832 24.2684C37.3617 25.6878 36.8382 27.0432 35.9743 28.1759C35.1103 29.3086 33.9415 30.1717 32.6047 30.6641C32.6047 30.5947 32.6047 30.4733 32.6047 30.3889V21.188C32.6066 20.9586 32.5474 20.7328 32.4332 20.5338C32.319 20.3348 32.154 20.1698 31.955 20.0556ZM35.3055 15.0128C35.2464 14.9765 35.1431 14.9142 35.069 14.8717L27.1045 10.2712C26.906 10.1554 26.6803 10.0943 26.4504 10.0943C26.2206 10.0943 25.9948 10.1554 25.7963 10.2712L16.0726 15.8858V11.9982C16.0715 11.9783 16.0753 11.9585 16.0837 11.9405C16.0921 11.9225 16.1048 11.9068 16.1207 11.8949L24.1719 7.25025C25.4053 6.53903 26.8158 6.19376 28.2383 6.25482C29.6608 6.31589 31.0364 6.78077 32.2044 7.59508C33.3723 8.40939 34.2842 9.53945 34.8334 10.8531C35.3826 12.1667 35.5464 13.6095 35.3055 15.0128ZM14.2424 21.9419L10.8752 19.9981C10.8576 19.9893 10.8423 19.9763 10.8309 19.9602C10.8195 19.9441 10.8122 19.9254 10.8098 19.9058V10.6071C10.8107 9.18295 11.2173 7.78848 11.9819 6.58696C12.7466 5.38544 13.8377 4.42659 15.1275 3.82264C16.4173 3.21869 17.8524 2.99464 19.2649 3.1767C20.6775 3.35876 22.0089 3.93941 23.1034 4.85067C23.0427 4.88379 22.937 4.94215 22.8668 4.98473L14.9024 9.58517C14.7025 9.69878 14.5366 9.86356 14.4215 10.0626C14.3065 10.2616 14.2466 10.4877 14.2479 10.7175L14.2424 21.9419ZM16.071 17.9991L20.4018 15.4978L24.7325 17.9975V22.9985L20.4018 25.4983L16.071 22.9985V17.9991Z" fill="currentColor"></path></svg></div></div></div></div></div><div class="group/conversation-turn relative flex w-full min-w-0 flex-col agent-turn"><div class="flex-col gap-1 md:gap-3"><div class="flex max-w-full flex-col flex-grow"><p class="first:mt-0 my-1.5 relative h-8 text-token-text-secondary hover:text-token-text-primary"></p><div class="group absolute left-0 top-0 mr-1.5 h-8 overflow-hidden mt-1"><button class="" style="opacity: 1;"><div class="flex items-center justify-start gap-1"><span>Thought for 11 seconds</span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-md"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 9.29289C5.68342 8.90237 6.31658 8.90237 6.70711 9.29289L12 14.5858L17.2929 9.29289C17.6834 8.90237 18.3166 8.90237 18.7071 9.29289C19.0976 9.68342 19.0976 10.3166 18.7071 10.7071L12.7071 16.7071C12.5196 16.8946 12.2652 17 12 17C11.7348 17 11.4804 16.8946 11.2929 16.7071L5.29289 10.7071C4.90237 10.3166 4.90237 9.68342 5.29289 9.29289Z" fill="currentColor"></path></svg></div></button></div><p></p><div data-message-author-role="assistant" data-message-id="4ed4f973-d623-47d4-b959-fb95e958e964" dir="auto" class="min-h-[20px] text-message flex w-full flex-col items-end gap-2 whitespace-normal break-words [.text-message+&amp;]:mt-5"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert dark"><p>明白了，我已根据您的要求对游戏进行了修改：</p><ol><li><p><strong>等比例放大游戏界面</strong>：将屏幕尺寸从 <code>200x200</code> 增加到 <code>400x400</code>，并将蛇和食物的块大小从 <code>10</code> 增加到 <code>20</code>，以保持游戏元素的比例不变。</p></li><li><p><strong>精简显示的文字信息</strong>：缩短了提示信息，使其更适合新的游戏界面尺寸。</p></li></ol><p>以下是更新后的代码：</p><pre class="!overflow-visible"><div class="dark bg-gray-950 contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative"><div class="flex items-center text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md h-9">python</div><div class="sticky top-9 md:top-[5.75rem]"><div class="absolute bottom-0 right-2 flex h-9 items-center"><div class="flex items-center rounded bg-token-main-surface-secondary px-2 font-sans text-xs text-token-text-secondary"><span class="" data-state="closed"></span></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-python"><span class="hljs-keyword">import</span> pygame
+<span class="hljs-keyword">import</span> sys
+<span class="hljs-keyword">import</span> random
+
+<span class="hljs-comment"># 初始化 Pygame</span>
+pygame.init()
+
+<span class="hljs-comment"># 设置屏幕大小（等比例放大）</span>
+SCREEN_WIDTH = <span class="hljs-number">400</span>
+SCREEN_HEIGHT = <span class="hljs-number">400</span>
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption(<span class="hljs-string">'Snake Game'</span>)
+
+<span class="hljs-comment"># 定义颜色</span>
+BLACK = pygame.Color(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+WHITE = pygame.Color(<span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>)
+GREEN = pygame.Color(<span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>)
+RED = pygame.Color(<span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+
+<span class="hljs-comment"># 定义蛇的块大小（等比例放大）</span>
+BLOCK_SIZE = <span class="hljs-number">20</span>
+
+<span class="hljs-comment"># 字体设置（调整字体大小）</span>
+font = pygame.font.SysFont(<span class="hljs-string">'Arial'</span>, <span class="hljs-number">30</span>)
+
+<span class="hljs-comment"># 游戏主函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():
+    level = <span class="hljs-number">1</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        game_loop(level)
+        level += <span class="hljs-number">1</span>
+
+<span class="hljs-comment"># 游戏循环函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">game_loop</span>(<span class="hljs-params">level</span>):
+    <span class="hljs-comment"># 初始化时钟</span>
+    clock = pygame.time.Clock()
+
+    <span class="hljs-comment"># 初始化蛇</span>
+    snake_pos = [SCREEN_WIDTH // <span class="hljs-number">2</span>, SCREEN_HEIGHT // <span class="hljs-number">2</span>]
+    snake_body = [snake_pos[:]]
+    direction = <span class="hljs-string">'STOP'</span>
+    change_to = direction
+
+    <span class="hljs-comment"># 初始化食物</span>
+    food_pos = get_food_position(snake_body)
+    food_spawn = <span class="hljs-literal">True</span>
+
+    <span class="hljs-comment"># 初始速度</span>
+    speed = level
+
+    <span class="hljs-comment"># 计分</span>
+    score = <span class="hljs-number">1</span>
+
+    <span class="hljs-comment"># 游戏开始界面</span>
+    start_game = <span class="hljs-literal">False</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> start_game:
+        screen.fill(BLACK)
+        show_message(<span class="hljs-string">'Press any key to start'</span>, WHITE, SCREEN_WIDTH / <span class="hljs-number">2</span>, SCREEN_HEIGHT / <span class="hljs-number">2</span>)
+        pygame.display.flip()
+        <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.KEYDOWN:
+                start_game = <span class="hljs-literal">True</span>
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+    <span class="hljs-comment"># 主游戏循环</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            <span class="hljs-comment"># 键盘输入</span>
+            <span class="hljs-keyword">elif</span> event.<span class="hljs-built_in">type</span> == pygame.KEYDOWN:
+                <span class="hljs-keyword">if</span> event.key == pygame.K_UP <span class="hljs-keyword">and</span> direction != <span class="hljs-string">'DOWN'</span>:
+                    change_to = <span class="hljs-string">'UP'</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_DOWN <span class="hljs-keyword">and</span> direction != <span class="hljs-string">'UP'</span>:
+                    change_to = <span class="hljs-string">'DOWN'</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_LEFT <span class="hljs-keyword">and</span> direction != <span class="hljs-string">'RIGHT'</span>:
+                    change_to = <span class="hljs-string">'LEFT'</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_RIGHT <span class="hljs-keyword">and</span> direction != <span class="hljs-string">'LEFT'</span>:
+                    change_to = <span class="hljs-string">'RIGHT'</span>
+
+        <span class="hljs-comment"># 如果有方向改变，更新方向</span>
+        <span class="hljs-keyword">if</span> change_to != <span class="hljs-string">'STOP'</span>:
+            direction = change_to
+
+        <span class="hljs-comment"># 根据方向移动蛇</span>
+        <span class="hljs-keyword">if</span> direction == <span class="hljs-string">'UP'</span>:
+            snake_pos[<span class="hljs-number">1</span>] -= BLOCK_SIZE
+        <span class="hljs-keyword">if</span> direction == <span class="hljs-string">'DOWN'</span>:
+            snake_pos[<span class="hljs-number">1</span>] += BLOCK_SIZE
+        <span class="hljs-keyword">if</span> direction == <span class="hljs-string">'LEFT'</span>:
+            snake_pos[<span class="hljs-number">0</span>] -= BLOCK_SIZE
+        <span class="hljs-keyword">if</span> direction == <span class="hljs-string">'RIGHT'</span>:
+            snake_pos[<span class="hljs-number">0</span>] += BLOCK_SIZE
+
+        <span class="hljs-comment"># 增加蛇的长度</span>
+        <span class="hljs-keyword">if</span> direction != <span class="hljs-string">'STOP'</span>:
+            snake_body.insert(<span class="hljs-number">0</span>, <span class="hljs-built_in">list</span>(snake_pos))
+            <span class="hljs-keyword">if</span> snake_pos == food_pos:
+                score += <span class="hljs-number">1</span>
+                food_spawn = <span class="hljs-literal">False</span>
+            <span class="hljs-keyword">else</span>:
+                snake_body.pop()
+
+        <span class="hljs-comment"># 食物重生</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> food_spawn:
+            food_pos = get_food_position(snake_body)
+            food_spawn = <span class="hljs-literal">True</span>
+
+        <span class="hljs-comment"># 填充背景</span>
+        screen.fill(BLACK)
+
+        <span class="hljs-comment"># 画蛇</span>
+        <span class="hljs-keyword">for</span> pos <span class="hljs-keyword">in</span> snake_body:
+            pygame.draw.rect(screen, GREEN, pygame.Rect(pos[<span class="hljs-number">0</span>], pos[<span class="hljs-number">1</span>], BLOCK_SIZE, BLOCK_SIZE))
+
+        <span class="hljs-comment"># 画食物</span>
+        pygame.draw.rect(screen, RED, pygame.Rect(food_pos[<span class="hljs-number">0</span>], food_pos[<span class="hljs-number">1</span>], BLOCK_SIZE, BLOCK_SIZE))
+
+        <span class="hljs-comment"># 边界检测</span>
+        <span class="hljs-keyword">if</span> snake_pos[<span class="hljs-number">0</span>] &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> snake_pos[<span class="hljs-number">0</span>] &gt;= SCREEN_WIDTH:
+            game_over()
+            <span class="hljs-keyword">return</span>
+        <span class="hljs-keyword">if</span> snake_pos[<span class="hljs-number">1</span>] &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> snake_pos[<span class="hljs-number">1</span>] &gt;= SCREEN_HEIGHT:
+            game_over()
+            <span class="hljs-keyword">return</span>
+
+        <span class="hljs-comment"># 自身碰撞检测</span>
+        <span class="hljs-keyword">for</span> block <span class="hljs-keyword">in</span> snake_body[<span class="hljs-number">1</span>:]:
+            <span class="hljs-keyword">if</span> snake_pos == block:
+                game_over()
+                <span class="hljs-keyword">return</span>
+
+        <span class="hljs-comment"># 当蛇的长度达到10，进入下一关</span>
+        <span class="hljs-keyword">if</span> score &gt;= <span class="hljs-number">10</span>:
+            show_continue()
+            <span class="hljs-keyword">return</span>
+
+        <span class="hljs-comment"># 刷新屏幕</span>
+        pygame.display.flip()
+
+        <span class="hljs-comment"># 控制游戏速度</span>
+        clock.tick(<span class="hljs-number">5</span> * speed)
+
+<span class="hljs-comment"># 获取食物位置函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">get_food_position</span>(<span class="hljs-params">snake_body</span>):
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        x = random.randrange(<span class="hljs-number">0</span>, SCREEN_WIDTH, BLOCK_SIZE)
+        y = random.randrange(<span class="hljs-number">0</span>, SCREEN_HEIGHT, BLOCK_SIZE)
+        <span class="hljs-keyword">if</span> [x, y] <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> snake_body:
+            <span class="hljs-keyword">return</span> [x, y]
+
+<span class="hljs-comment"># 游戏结束函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">game_over</span>():
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        screen.fill(BLACK)
+        show_message(<span class="hljs-string">'Game Over! Press R'</span>, WHITE, SCREEN_WIDTH / <span class="hljs-number">2</span>, SCREEN_HEIGHT / <span class="hljs-number">2</span>)
+        pygame.display.flip()
+        <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.KEYDOWN:
+                <span class="hljs-keyword">if</span> event.key == pygame.K_r:
+                    main()
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+<span class="hljs-comment"># 显示继续函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">show_continue</span>():
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        screen.fill(BLACK)
+        show_message(<span class="hljs-string">'Level Up! Press C'</span>, WHITE, SCREEN_WIDTH / <span class="hljs-number">2</span>, SCREEN_HEIGHT / <span class="hljs-number">2</span>)
+        pygame.display.flip()
+        <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.KEYDOWN:
+                <span class="hljs-keyword">if</span> event.key == pygame.K_c:
+                    <span class="hljs-keyword">return</span>
+            <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span> == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+<span class="hljs-comment"># 显示信息函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">show_message</span>(<span class="hljs-params">message, color, x, y</span>):
+    text = font.render(message, <span class="hljs-literal">True</span>, color)
+    rect = text.get_rect(center=(x, y))
+    screen.blit(text, rect)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    main()
+</code></div></div></pre><p><strong>修改说明：</strong></p><ol><li><p><strong>游戏界面放大</strong>：</p><ul><li>将 <code>SCREEN_WIDTH</code> 和 <code>SCREEN_HEIGHT</code> 从 <code>200</code> 增加到 <code>400</code>，使游戏窗口更大。</li><li>将 <code>BLOCK_SIZE</code> 从 <code>10</code> 增加到 <code>20</code>，以保持蛇和食物的大小与屏幕尺寸的比例。</li></ul></li><li><p><strong>调整字体大小</strong>：</p><ul><li>将字体大小从 <code>20</code> 增加到 <code>30</code>，以适应更大的屏幕。</li></ul></li><li><p><strong>精简提示信息</strong>：</p><ul><li>开始界面提示：<code>'Press any key to start'</code></li><li>游戏结束提示：<code>'Game Over! Press R'</code></li><li>关卡提升提示：<code>'Level Up! Press C'</code></li><li>缩短了提示信息，使其在新的屏幕尺寸下能够完整显示。</li></ul></li><li><p><strong>调整蛇的初始位置</strong>：</p><ul><li>将蛇的初始位置设置为屏幕中心：<code>snake_pos = [SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2]</code></li></ul></li><li><p><strong>修正边界检测条件</strong>：</p><ul><li>将 <code>&gt;</code> 改为 <code>&gt;=</code>，确保蛇碰到边界时正确判定游戏结束。</li></ul></li></ol><p><strong>运行方法：</strong></p><ol><li>将上述代码保存为 <code>snake_game.py</code>。</li><li>确保已安装 Pygame，未安装可运行 <code>pip install pygame</code>。</li><li>在命令行中运行 <code>python snake_game.py</code>。</li><li>按提示操作，使用键盘的上下左右箭头控制贪食蛇移动。</li></ol><p><strong>游戏说明：</strong></p><ul><li>游戏开始时，贪食蛇长度为1，速度为1，等待玩家输入方向指令。</li><li>使用键盘的 <strong>上下左右箭头键</strong> 控制贪食蛇的移动方向。</li><li>当贪食蛇的长度达到10时，当前关卡结束，按 <strong>C 键</strong> 继续进入下一关。</li><li>每通过一关，贪食蛇的速度增加1，例如第二关速度为2，第三关速度为3。</li><li>如果贪食蛇碰到自己的身体或墙壁，游戏结束，按 <strong>R 键</strong> 重新开始游戏。</li></ul><p><strong>注意事项：</strong></p><ul><li>如果提示信息仍然过长，可以进一步调整字体大小或精简信息内容。</li><li>您也可以根据需要调整 <code>SCREEN_WIDTH</code>、<code>SCREEN_HEIGHT</code> 和 <code>BLOCK_SIZE</code> 以获得最佳的游戏体验。</li></ul><p>希望现在的游戏界面和提示信息能够满足您的需求，祝您游戏愉快！</p></div></div></div></div><div class="mt-1 flex gap-3 empty:hidden -ml-2"></div><div class="pr-2 lg:pr-0"></div><div class="mt-3 w-full empty:hidden"><div class="text-center"></div></div></div></div></div></div></article></div></div></div></div>
+</body>
+</html>
+  
