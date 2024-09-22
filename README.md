@@ -34,6 +34,7 @@ pip install -r requirements
 - [x] [iPhone 16 Pro Max 版本如何选购？美版/欧版/陆版/港版 | Apple发布会2024](https://youtu.be/1bg1tRp8r-0)
 - [x] [PS5 Pro 差评如潮！光驱没有 ｜ 居然连支架都不送](https://youtu.be/IDua_Hgyq5k)
 - [x] [OpenAI GPT o1模型深度解析与Python贪吃蛇游戏演示](https://youtu.be/K4PWzgann6o) ｜ [贪食蛇代码](https://github.com/lingwsh/ben_tech_python/tree/main/gpt_o1_preview_demo)
+- [x] [苹果iOS 18锁机内幕揭秘！这些配件可能让你的iPhone无法使用！](https://youtu.be/lSkfTveq9-A)
 
 ## 学习/生活 & 技巧/经验
 - [x] [Ifö马桶漏水怎么修？吾是马桶工程师](https://youtu.be/vImMbRaINDw)
