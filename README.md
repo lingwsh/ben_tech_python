@@ -46,6 +46,7 @@ pip install -r requirements
 - [x] [全球最大的企業接力賽 DHL Relay](https://youtu.be/_Je_87zKLcI)
 - [x] [丹麦传统马术狩猎活动：Hubertusjagt](https://youtu.be/1ByB-24X-K8)
 - [x] [揭秘你不知道的事实：丹麦、挪威和瑞典学术界性别平等状况](https://youtu.be/RqA1XuWLrxE)
+- [x] [双立人菜刀测评：贵有贵的道理？教你选出高性价比好刀！](https://youtu.be/HboCCKRLtJA)
 
 ## 快乐游戏
 - [x] [黑神话悟空 何是天命人？](https://youtu.be/qXOouWMolc0)
@@ -56,6 +57,8 @@ pip install -r requirements
 - [x] [黑神话悟空 第二回大结局 陕北说书断头人有头了｜断头人由来 小须弥山之主 灵吉：大战黄风大圣](https://youtu.be/RXLbvFasC8Y)
 - [x] [黑神话悟空 |隐藏剧情 支线不空boss 前身 | 书生小狐狸：结婚生子 or 作围脖？人妖佛一念之間| 第二回结尾](https://youtu.be/lgyXahjis6Q)
 - [x] [玩黑神话悟空指南：花多少钱？用什么平台设备？大趣闻！](https://youtu.be/9e_O4ZsNR78)
+- [x] [猪八戒与蜘蛛精的今世前生 故事动漫 | 黑神话悟空](https://youtu.be/vaVROgrnfsk)
+- [x] [小狐狸萍萍：玉面公主与牛魔王之女 | 黑神话悟空 剧情动漫](https://youtu.be/IlUeu-uO1g8)
 
 ## Python基本语法
 - [x] [视频: 数字和变量 Numbers and Variable](https://youtu.be/VXbLZtoES6U) | [Reading materials](https://github.com/lingwsh/ben_tech_python/blob/main/python_basic/01_numbers.md)
