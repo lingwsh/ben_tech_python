@@ -35,6 +35,10 @@ pip install -r requirements
 - [x] [PS5 Pro 差评如潮！光驱没有 ｜ 居然连支架都不送](https://youtu.be/IDua_Hgyq5k)
 - [x] [OpenAI GPT o1模型深度解析与Python贪吃蛇游戏演示](https://youtu.be/K4PWzgann6o) ｜ [贪食蛇代码](https://github.com/lingwsh/ben_tech_python/tree/main/gpt_o1_preview_demo)
 - [x] [苹果iOS 18锁机内幕揭秘！这些配件可能让你的iPhone无法使用！](https://youtu.be/lSkfTveq9-A)
+- [x] [iPhone 16 Pro/Max/Plus全色真机上手体验](https://youtu.be/93e9ANgI3l0)
+- [x] [Tesla We Robot Launch New Products Elon Musk Speech  ｜With Subtitles #WeRobot | #Robotaxi | #Optimus](https://youtu.be/F5syn5aSzyw)
+- [x] [Tesla股票暴跌原因 We Robot产品全面分析 #Robtaxi｜#Robvan ｜#Optimus 详细介绍](https://youtu.be/7m3hfSDPyOo)
+- [x] [Starship's Fifth Flight Test: Mechazilla Successfully Catches Booster on First Attempt 4K](https://youtu.be/MZzWBvZeReg)
 
 ## 学习/生活 & 技巧/经验
 - [x] [Ifö马桶漏水怎么修？吾是马桶工程师](https://youtu.be/vImMbRaINDw)
@@ -47,6 +51,8 @@ pip install -r requirements
 - [x] [丹麦传统马术狩猎活动：Hubertusjagt](https://youtu.be/1ByB-24X-K8)
 - [x] [揭秘你不知道的事实：丹麦、挪威和瑞典学术界性别平等状况](https://youtu.be/RqA1XuWLrxE)
 - [x] [双立人菜刀测评：贵有贵的道理？教你选出高性价比好刀！](https://youtu.be/HboCCKRLtJA)
+- [x] [用小苏打和洗洁精轻松清洁油烟机滤网](https://youtu.be/blSo_OpFGZM)
+- [x] [丹麦农场开放日体验 哥本哈根大学植物与环境研究所 Åbent Landbrug 2024](https://youtu.be/joS9MrYeXy4)
 
 ## 快乐游戏
 - [x] [黑神话悟空 何是天命人？](https://youtu.be/qXOouWMolc0)
