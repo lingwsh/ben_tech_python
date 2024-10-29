@@ -39,6 +39,8 @@ pip install -r requirements
 - [x] [Tesla We Robot Launch New Products Elon Musk Speech  ｜With Subtitles #WeRobot | #Robotaxi | #Optimus](https://youtu.be/F5syn5aSzyw)
 - [x] [Tesla股票暴跌原因 We Robot产品全面分析 #Robtaxi｜#Robvan ｜#Optimus 详细介绍](https://youtu.be/7m3hfSDPyOo)
 - [x] [Starship's Fifth Flight Test: Mechazilla Successfully Catches Booster on First Attempt 4K](https://youtu.be/MZzWBvZeReg)
+- [x] [iMac M4 发布会 五分钟快速看懂  - 2024 October 28](https://youtu.be/KrlxK4Uc_m4)
+- [x] [Mac Mini M4 | M4 Pro 震撼来袭 五分钟快速秒懂 2024-10-29 苹果新品发布会](https://youtu.be/jK73bIScBE0)º
 
 ## 学习/生活 & 技巧/经验
 - [x] [Ifö马桶漏水怎么修？吾是马桶工程师](https://youtu.be/vImMbRaINDw)
